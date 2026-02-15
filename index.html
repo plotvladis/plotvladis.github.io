@@ -10,7 +10,6 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   
   <style>
-    /* СТИЛИ БЕЗ ИЗМЕНЕНИЙ - КАК В ВАШЕМ ФАЙЛЕ */
     * {
       margin: 0;
       padding: 0;
@@ -829,7 +828,7 @@
     });
 
     // ============================================
-    // ИСПРАВЛЕННАЯ ФОРМА ОТПРАВКИ В WHATSAPP
+    // ИСПРАВЛЕННАЯ ФОРМА — БЕЗ БЕЛОГО ЭКРАНА
     // ============================================
     document.getElementById('quickForm').addEventListener('submit', function(e) {
       e.preventDefault();
@@ -840,24 +839,28 @@
       const message = document.getElementById('formMsg').value.trim();
 
       if (!name || !email || !phone) {
-        alert('Пожалуйста, заполните имя, email и телефон');
+        alert('Please fill in your name, email and phone');
         return;
       }
 
-      // Формируем сообщение для WhatsApp
-      const text = `🏡 *New inquiry from plotvi.com*%0A%0A👤 *Name:* ${name}%0A📧 *Email:* ${email}%0A📱 *Iphone:* ${phone}%0A💬 *Message:* ${message || '—'}`;
+      // Формируем сообщение на английском
+      const text = `🏡 *New inquiry from plotvi.com*%0A%0A👤 *Name:* ${name}%0A📧 *Email:* ${email}%0A📱 *Phone:* ${phone}%0A💬 *Message:* ${message || '—'}`;
       
       // Ваш номер
       const phoneNumber = '18299948888';
+      const whatsappUrl = `https://wa.me/${phoneNumber}?text=${text}`;
       
-      // Открываем WhatsApp
-      window.open(`https://wa.me/${phoneNumber}?text=${text}`, '_blank');
+      // 1. Сначала показываем благодарственное сообщение
+      alert('✅ Thank you! You will now be redirected to WhatsApp to send your request.');
       
-      // Показываем благодарственное сообщение
-      alert('✅ Спасибо! Заявка открыта в WhatsApp. Осталось только нажать "Отправить"');
-      
-      // Очищаем форму
+      // 2. Очищаем форму (чтобы данные не отправились повторно)
       this.reset();
+      
+      // 3. НЕБОЛЬШАЯ ЗАДЕРЖКА перед открытием WhatsApp
+      //    Это самая частая причина белого экрана — браузер не успевает.
+      setTimeout(function() {
+        window.open(whatsappUrl, '_blank');
+      }, 300); // задержка 0.3 секунды
     });
 
     // FAQ аккордеон
@@ -870,6 +873,7 @@
       });
     });
 
+    // установка английского по умолчанию
     applyLanguage('en');
   </script>
 </body>
