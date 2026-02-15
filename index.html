@@ -65,10 +65,10 @@
     nav a:hover {
       color: #2563eb;
     }
-    /* СТИЛЬНЫЙ ПЕРЕКЛЮЧАТЕЛЬ ЯЗЫКОВ */
+    /* ПОНЯТНЫЙ ПЕРЕКЛЮЧАТЕЛЬ ЯЗЫКОВ */
     .language-selector {
       display: flex;
-      gap: 8px;
+      gap: 4px;
       background: #f1f5f9;
       padding: 4px;
       border-radius: 48px;
@@ -77,7 +77,7 @@
     .lang-btn {
       background: transparent;
       border: none;
-      padding: 8px 16px;
+      padding: 6px 12px;
       border-radius: 40px;
       font-size: 15px;
       font-weight: 600;
@@ -86,7 +86,7 @@
       color: #64748b;
       display: flex;
       align-items: center;
-      gap: 6px;
+      gap: 4px;
     }
     .lang-btn i {
       font-size: 18px;
@@ -100,19 +100,18 @@
       background: #e2e8f0;
       color: #1e293b;
     }
-    /* Для мобильных */
+    /* На мобильных — только флаги + текст */
     @media (max-width: 800px) {
-      .lang-btn span {
-        display: none;
-      }
       .lang-btn {
-        padding: 8px 12px;
+        padding: 6px 8px;
+        font-size: 13px;
       }
       .lang-btn i {
-        font-size: 20px;
-        margin: 0;
+        font-size: 16px;
+        margin-right: 2px;
       }
     }
+    /* Остальные стили без изменений */
     .hero {
       background: linear-gradient(135deg, #0b1a33, #102a43);
       color: white;
@@ -528,18 +527,18 @@
           <li><a href="#contact" id="navContact">Contact</a></li>
         </ul>
       </nav>
-      <!-- НОВЫЙ СТИЛЬНЫЙ ПЕРЕКЛЮЧАТЕЛЬ ЯЗЫКОВ -->
+      <!-- ПОНЯТНЫЙ ПЕРЕКЛЮЧАТЕЛЬ С ФЛАГАМИ -->
       <div class="language-selector">
         <button class="lang-btn active" data-lang="en" id="langEn">
-          <i class="fas fa-globe-americas"></i>
+          <i class="fas fa-flag-usa"></i>
           <span>EN</span>
         </button>
         <button class="lang-btn" data-lang="es" id="langEs">
-          <i class="fas fa-globe-europe"></i>
+          <i class="fas fa-flag-spain"></i>
           <span>ES</span>
         </button>
         <button class="lang-btn" data-lang="ru" id="langRu">
-          <i class="fas fa-globe-asia"></i>
+          <i class="fas fa-flag-ru"></i>
           <span>RU</span>
         </button>
       </div>
@@ -557,7 +556,7 @@
         </div>
         <div class="hero-stats">
           <div class="stat-item"><div class="stat-number">17+</div><div class="stat-label" id="statYears">years experience</div></div>
-          <div class="stat-item"><div class="stat-number">10+</div><div class="stat-label" id="statVillas">villas built</div></div>
+          <div class="stat-item"><div class="stat-number">50+</div><div class="stat-label" id="statVillas">villas built</div></div>
         </div>
       </div>
       <div class="hero-image">
@@ -952,7 +951,7 @@
       //    Это самая частая причина белого экрана — браузер не успевает.
       setTimeout(function() {
         window.open(whatsappUrl, '_blank');
-      }, 300); // задержка 0.3 секунды
+      }, 300);
     });
 
     // FAQ аккордеон
