@@ -39,7 +39,6 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 10px;
     }
     .logo a {
       font-size: 26px;
@@ -66,22 +65,7 @@
     nav a:hover {
       color: #2563eb;
     }
-    /* Гамбургер-меню для мобильных */
-    .mobile-menu-btn {
-      display: none;
-      background: none;
-      border: none;
-      font-size: 28px;
-      color: #2563eb;
-      cursor: pointer;
-      padding: 8px;
-      transition: all 0.2s;
-      order: 3;
-    }
-    .mobile-menu-btn:hover {
-      color: #1d4ed8;
-    }
-    /* Понятный переключатель с эмодзи-флагами */
+    /* ПОНЯТНЫЙ ПЕРЕКЛЮЧАТЕЛЬ ЯЗЫКОВ */
     .language-selector {
       display: flex;
       gap: 4px;
@@ -89,24 +73,23 @@
       padding: 4px;
       border-radius: 48px;
       border: 1px solid #e2e8f0;
-      order: 2;
     }
     .lang-btn {
       background: transparent;
       border: none;
-      padding: 8px 16px;
+      padding: 6px 12px;
       border-radius: 40px;
-      font-size: 16px;
+      font-size: 15px;
       font-weight: 600;
       cursor: pointer;
       transition: all 0.2s ease;
       color: #64748b;
       display: flex;
       align-items: center;
-      gap: 6px;
+      gap: 4px;
     }
-    .lang-btn .flag {
-      font-size: 20px;
+    .lang-btn i {
+      font-size: 18px;
     }
     .lang-btn.active {
       background: #2563eb;
@@ -117,60 +100,18 @@
       background: #e2e8f0;
       color: #1e293b;
     }
-    /* Мобильная навигация */
+    /* На мобильных — только флаги + текст */
     @media (max-width: 800px) {
-      .mobile-menu-btn {
-        display: block;
+      .lang-btn {
+        padding: 6px 8px;
+        font-size: 13px;
       }
-      
-      nav ul {
-        position: fixed;
-        top: 70px;
-        left: -100%;
-        width: 80%;
-        height: calc(100vh - 70px);
-        background: white;
-        flex-direction: column;
-        padding: 30px 20px;
-        box-shadow: 4px 0 20px rgba(0,0,0,0.1);
-        transition: left 0.3s ease;
-        z-index: 999;
-        display: flex !important;
-        gap: 10px;
-      }
-      
-      nav ul.active {
-        left: 0;
-      }
-      
-      nav ul li {
-        margin: 5px 0;
-      }
-      
-      nav ul li a {
-        font-size: 18px;
-        display: block;
-        padding: 15px 20px;
-        border-radius: 12px;
-      }
-      
-      nav ul li a:hover {
-        background: #f1f5f9;
-        color: #2563eb;
-      }
-      
-      .language-selector {
-        margin-left: auto;
-      }
-      
-      .hero-grid {
-        grid-template-columns: 1fr;
-      }
-      
-      .hero h1 {
-        font-size: 36px;
+      .lang-btn i {
+        font-size: 16px;
+        margin-right: 2px;
       }
     }
+    /* Остальные стили без изменений */
     .hero {
       background: linear-gradient(135deg, #0b1a33, #102a43);
       color: white;
@@ -561,6 +502,14 @@
     .whatsapp-float:hover {
       transform: scale(1.1);
     }
+    @media (max-width: 800px) {
+      .hero-grid, .contact-grid, .footer-grid {
+        grid-template-columns: 1fr;
+      }
+      nav ul {
+        display: none;
+      }
+    }
   </style>
 </head>
 <body>
@@ -578,22 +527,18 @@
           <li><a href="#contact" id="navContact">Contact</a></li>
         </ul>
       </nav>
-      <!-- Гамбургер-меню для мобильных -->
-      <button class="mobile-menu-btn" id="mobileMenuBtn">
-        <i class="fas fa-bars"></i>
-      </button>
-      <!-- Переключатель с эмодзи-флагами -->
+      <!-- ПОНЯТНЫЙ ПЕРЕКЛЮЧАТЕЛЬ С ФЛАГАМИ -->
       <div class="language-selector">
         <button class="lang-btn active" data-lang="en" id="langEn">
-          <span class="flag">🇺🇸</span>
+          <i class="fas fa-flag-usa"></i>
           <span>EN</span>
         </button>
         <button class="lang-btn" data-lang="es" id="langEs">
-          <span class="flag">🇪🇸</span>
+          <i class="fas fa-flag-spain"></i>
           <span>ES</span>
         </button>
         <button class="lang-btn" data-lang="ru" id="langRu">
-          <span class="flag">🇷🇺</span>
+          <i class="fas fa-flag-ru"></i>
           <span>RU</span>
         </button>
       </div>
@@ -972,40 +917,6 @@
     document.getElementById('langEn').addEventListener('click', () => applyLanguage('en'));
     document.getElementById('langEs').addEventListener('click', () => applyLanguage('es'));
     document.getElementById('langRu').addEventListener('click', () => applyLanguage('ru'));
-
-    // ============================================
-    // ГАМБУРГЕР-МЕНЮ ДЛЯ МОБИЛЬНЫХ
-    // ============================================
-    const mobileBtn = document.getElementById('mobileMenuBtn');
-    const navMenu = document.querySelector('nav ul');
-
-    if (mobileBtn) {
-      mobileBtn.addEventListener('click', function() {
-        navMenu.classList.toggle('active');
-        const icon = this.querySelector('i');
-        if (navMenu.classList.contains('active')) {
-          icon.className = 'fas fa-times';
-        } else {
-          icon.className = 'fas fa-bars';
-        }
-      });
-
-      // Закрывать меню при клике на ссылку
-      document.querySelectorAll('nav ul li a').forEach(link => {
-        link.addEventListener('click', () => {
-          navMenu.classList.remove('active');
-          mobileBtn.querySelector('i').className = 'fas fa-bars';
-        });
-      });
-
-      // Закрывать при клике вне меню
-      document.addEventListener('click', (e) => {
-        if (!navMenu.contains(e.target) && !mobileBtn.contains(e.target)) {
-          navMenu.classList.remove('active');
-          mobileBtn.querySelector('i').className = 'fas fa-bars';
-        }
-      });
-    }
 
     // ============================================
     // ИСПРАВЛЕННАЯ ФОРМА — БЕЗ БЕЛОГО ЭКРАНА
