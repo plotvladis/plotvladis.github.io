@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>plotvi.com — Real Estate Construction Dominican Republic</title>
+  <title>PLOTVI — Real Estate Construction Dominican Republic</title>
   <meta name="description" content="Vladis P.Plot — premium construction & real estate in Sosúa, Cabarete, Punta Cana. Turnkey villas, legal support, investments.">
   
   <!-- Font Awesome 6 (free) -->
@@ -39,6 +39,8 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 10px;
     }
     .logo a {
       font-size: 26px;
@@ -65,7 +67,7 @@
     nav a:hover {
       color: #2563eb;
     }
-    /* ПОНЯТНЫЙ ПЕРЕКЛЮЧАТЕЛЬ ЯЗЫКОВ */
+    /* ПОНЯТНЫЙ ПЕРЕКЛЮЧАТЕЛЬ С ЭМОДЗИ-ФЛАГАМИ */
     .language-selector {
       display: flex;
       gap: 4px;
@@ -77,19 +79,19 @@
     .lang-btn {
       background: transparent;
       border: none;
-      padding: 6px 12px;
+      padding: 8px 16px;
       border-radius: 40px;
-      font-size: 15px;
+      font-size: 16px;
       font-weight: 600;
       cursor: pointer;
       transition: all 0.2s ease;
       color: #64748b;
       display: flex;
       align-items: center;
-      gap: 4px;
+      gap: 6px;
     }
-    .lang-btn i {
-      font-size: 18px;
+    .lang-btn .flag {
+      font-size: 20px;
     }
     .lang-btn.active {
       background: #2563eb;
@@ -100,18 +102,19 @@
       background: #e2e8f0;
       color: #1e293b;
     }
-    /* На мобильных — только флаги + текст */
+    /* На мобильных */
     @media (max-width: 800px) {
-      .lang-btn {
-        padding: 6px 8px;
-        font-size: 13px;
+      .header-flex {
+        justify-content: center;
       }
-      .lang-btn i {
-        font-size: 16px;
-        margin-right: 2px;
+      nav ul {
+        display: none;
+      }
+      .lang-btn {
+        padding: 6px 12px;
+        font-size: 14px;
       }
     }
-    /* Остальные стили без изменений */
     .hero {
       background: linear-gradient(135deg, #0b1a33, #102a43);
       color: white;
@@ -506,8 +509,8 @@
       .hero-grid, .contact-grid, .footer-grid {
         grid-template-columns: 1fr;
       }
-      nav ul {
-        display: none;
+      .hero h1 {
+        font-size: 36px;
       }
     }
   </style>
@@ -527,24 +530,25 @@
           <li><a href="#contact" id="navContact">Contact</a></li>
         </ul>
       </nav>
-      <!-- ПОНЯТНЫЙ ПЕРЕКЛЮЧАТЕЛЬ С ФЛАГАМИ -->
+      <!-- ПЕРЕКЛЮЧАТЕЛЬ С ЭМОДЗИ-ФЛАГАМИ (работают везде) -->
       <div class="language-selector">
         <button class="lang-btn active" data-lang="en" id="langEn">
-          <i class="fas fa-flag-usa"></i>
+          <span class="flag">🇺🇸</span>
           <span>EN</span>
         </button>
         <button class="lang-btn" data-lang="es" id="langEs">
-          <i class="fas fa-flag-spain"></i>
+          <span class="flag">🇪🇸</span>
           <span>ES</span>
         </button>
         <button class="lang-btn" data-lang="ru" id="langRu">
-          <i class="fas fa-flag-ru"></i>
+          <span class="flag">🇷🇺</span>
           <span>RU</span>
         </button>
       </div>
     </div>
   </header>
 
+  <!-- ОСТАЛЬНАЯ ЧАСТЬ КОДА (ТЕЛО САЙТА) БЕЗ ИЗМЕНЕНИЙ -->
   <section class="hero" id="home">
     <div class="container hero-grid">
       <div>
