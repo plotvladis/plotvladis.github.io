@@ -65,14 +65,53 @@
     nav a:hover {
       color: #2563eb;
     }
-    .lang-select {
+    /* СТИЛЬНЫЙ ПЕРЕКЛЮЧАТЕЛЬ ЯЗЫКОВ */
+    .language-selector {
+      display: flex;
+      gap: 8px;
       background: #f1f5f9;
+      padding: 4px;
+      border-radius: 48px;
+      border: 1px solid #e2e8f0;
+    }
+    .lang-btn {
+      background: transparent;
       border: none;
-      padding: 6px 12px;
+      padding: 8px 16px;
       border-radius: 40px;
-      font-size: 14px;
-      font-weight: 500;
+      font-size: 15px;
+      font-weight: 600;
       cursor: pointer;
+      transition: all 0.2s ease;
+      color: #64748b;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .lang-btn i {
+      font-size: 18px;
+    }
+    .lang-btn.active {
+      background: #2563eb;
+      color: white;
+      box-shadow: 0 4px 10px rgba(37,99,235,0.3);
+    }
+    .lang-btn:hover:not(.active) {
+      background: #e2e8f0;
+      color: #1e293b;
+    }
+    /* Для мобильных */
+    @media (max-width: 800px) {
+      .lang-btn span {
+        display: none;
+      }
+      .lang-btn {
+        padding: 8px 12px;
+      }
+      .lang-btn i {
+        font-size: 20px;
+        margin: 0;
+      }
     }
     .hero {
       background: linear-gradient(135deg, #0b1a33, #102a43);
@@ -489,11 +528,21 @@
           <li><a href="#contact" id="navContact">Contact</a></li>
         </ul>
       </nav>
-      <select class="lang-select" id="langSwitcher">
-        <option value="en">🇬🇧 EN</option>
-        <option value="es">🇪🇸 ES</option>
-        <option value="ru">🇷🇺 RU</option>
-      </select>
+      <!-- НОВЫЙ СТИЛЬНЫЙ ПЕРЕКЛЮЧАТЕЛЬ ЯЗЫКОВ -->
+      <div class="language-selector">
+        <button class="lang-btn active" data-lang="en" id="langEn">
+          <i class="fas fa-globe-americas"></i>
+          <span>EN</span>
+        </button>
+        <button class="lang-btn" data-lang="es" id="langEs">
+          <i class="fas fa-globe-europe"></i>
+          <span>ES</span>
+        </button>
+        <button class="lang-btn" data-lang="ru" id="langRu">
+          <i class="fas fa-globe-asia"></i>
+          <span>RU</span>
+        </button>
+      </div>
     </div>
   </header>
 
@@ -683,7 +732,7 @@
     // язык по умолчанию английский
     let currentLang = 'en';
 
-    // словарь переводов
+    // словарь переводов с ПОЛНЫМ испанским
     const translations = {
       en: {
         navHome: 'Home', navAbout: 'About', navServices: 'Services', navProjects: 'Projects', navContact: 'Contact',
@@ -720,6 +769,42 @@
         footerNav: 'Navigation', footerHome: 'Home', footerAbout: 'About', footerServices: 'Services', footerProjects: 'Projects',
         footerServTitle: 'Services', footerServ1: 'Turnkey construction', footerServ2: 'Architectural design', footerServ3: 'Legal & immigration', footerServ4: 'Management',
         footerContact: 'Contact', footerLocation: 'Sosúa, DR', footerRights: 'All rights reserved.'
+      },
+      es: {
+        navHome: 'Inicio', navAbout: 'Nosotros', navServices: 'Servicios', navProjects: 'Proyectos', navContact: 'Contacto',
+        heroTitle: 'Construcción Inmobiliaria<br>en República Dominicana',
+        heroSub: 'Villas llave en mano · Asesoría legal · Inversiones · Sosúa, Cabarete, Punta Cana',
+        ctaContact: 'Contáctenos', ctaProjects: 'Nuestros proyectos',
+        statYears: 'años de experiencia', statVillas: 'villas construidas',
+        aboutTitle: 'Sobre Vladis P.Plot',
+        aboutText1: 'Fundada en 2007, nos hemos convertido en un socio confiable en construcción de lujo y gestión inmobiliaria en la costa norte de República Dominicana.',
+        aboutText2: 'Nuestro equipo ofrece desarrollo de ciclo completo: desde diseño arquitectónico y permisos hasta entrega y servicio postventa. También ofrecemos apoyo legal y migratorio para inversores extranjeros.',
+        servicesTitle: 'Nuestros servicios',
+        service1Title: 'Construcción llave en mano', service1Desc: 'Villas, apartamentos, complejos – desde cimientos hasta acabados.',
+        service2Title: 'Diseño arquitectónico', service2Desc: 'Visualización 3D, proyectos personalizados, permisos.',
+        service3Title: 'Asesoría legal', service3Desc: 'Registro de propiedad (deslinde), contratos, debida diligencia.',
+        service4Title: 'Inmigración', service4Desc: 'Visas de residencia, residencia temporal y permanente.',
+        service5Title: 'Gestión de propiedades', service5Desc: 'Alquiler, mantenimiento, cuidado.',
+        service6Title: 'Consultoría de inversiones', service6Desc: 'Análisis ROI, estudio de mercado, selección de proyectos.',
+        portfolioTitle: 'Proyectos destacados',
+        project1Name: 'Perla Marina', proj1Loc: 'Sosúa, Costa Norte', proj1Desc: 'Elegante villa de 115 m² con jardín tropical, 3 dormitorios, terraza privada. Comunidad estilo resort.', proj1Price: '$395,000',
+        project2Name: 'Sea Horse Ranch', proj2Loc: 'Cabarete, comunidad cerrada', proj2Desc: 'Exclusiva villa de 500 m² con vistas al mar, piscina privada, 5 suites, cuarto de servicio. Ultra lujo.', proj2Price: '$1,450,000',
+        project3Name: 'Sosúa Ocean Village', proj3Loc: 'Sosúa, acantilado', proj3Desc: 'Villa panorámica de 300 m², ventanales, piscina infinita, acceso directo al océano.', proj3Price: '$895,000',
+        project4Name: 'Cabarete Hills', proj4Loc: 'Cabarete, colinas', proj4Desc: 'Moderna villa de diseño de 280 m², concepto abierto, terraza en azotea, vista 360° montaña y mar.', proj4Price: '$675,000',
+        project5Name: 'Panorama Village', proj5Loc: 'Sosúa, vista a la bahía', proj5Desc: 'Amplia villa de lujo de 450 m², 6 habitaciones, cine, gimnasio, con vista a la bahía de Sosúa.', proj5Price: '$1,190,000',
+        project6Name: 'Campo del Mar', proj6Loc: 'Sosúa, frente a la playa', proj6Desc: 'Acogedora villa de 120 m², 2 dormitorios, 2 baños, patio tropical, a 3 minutos de la playa.', proj6Price: '$345,000',
+        faqTitle: 'Preguntas frecuentes',
+        faq1q: '¿Tiempo de construcción de una villa?', faq1a: 'Promedio de 8 a 12 meses para 300‑400 m², según la complejidad.',
+        faq2q: '¿Ayudan con la residencia?', faq2a: 'Sí, brindamos asistencia migratoria completa para inversores y sus familias.',
+        faq3q: '¿Qué garantía ofrecen?', faq3a: '5 años en estructuras, 2 años en sistemas – todo por escrito en el contrato.',
+        contactTitle: 'Contacto', contactInfoTitle: 'plotvi.com',
+        address: 'Sosúa, Puerto Plata, República Dominicana',
+        hours: 'Lun–Vie 9:00–18:00, Dom 11:00–15:00',
+        formName: 'Su nombre', formEmail: 'Correo electrónico', formPhone: 'WhatsApp / teléfono', formMsg: 'Mensaje / tipo de proyecto...', formSubmit: 'Enviar solicitud',
+        footerDesc: 'Construcción premium e inmuebles en República Dominicana desde 2007.',
+        footerNav: 'Navegación', footerHome: 'Inicio', footerAbout: 'Nosotros', footerServices: 'Servicios', footerProjects: 'Proyectos',
+        footerServTitle: 'Servicios', footerServ1: 'Construcción llave en mano', footerServ2: 'Diseño arquitectónico', footerServ3: 'Legal e inmigración', footerServ4: 'Gestión',
+        footerContact: 'Contacto', footerLocation: 'Sosúa, RD', footerRights: 'Todos los derechos reservados.'
       },
       ru: {
         navHome: 'Главная', navAbout: 'О компании', navServices: 'Услуги', navProjects: 'Проекты', navContact: 'Контакты',
@@ -821,11 +906,18 @@
       document.getElementById('footerContact').innerText = t.footerContact;
       document.getElementById('footerLocation').innerText = t.footerLocation;
       document.getElementById('footerRights').innerText = t.footerRights;
+
+      // Обновляем активную кнопку языка
+      document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.remove('active');
+      });
+      document.getElementById(`lang${lang.charAt(0).toUpperCase() + lang.slice(1)}`).classList.add('active');
     }
 
-    document.getElementById('langSwitcher').addEventListener('change', function(e) {
-      applyLanguage(e.target.value);
-    });
+    // Обработчики для кнопок языка
+    document.getElementById('langEn').addEventListener('click', () => applyLanguage('en'));
+    document.getElementById('langEs').addEventListener('click', () => applyLanguage('es'));
+    document.getElementById('langRu').addEventListener('click', () => applyLanguage('ru'));
 
     // ============================================
     // ИСПРАВЛЕННАЯ ФОРМА — БЕЗ БЕЛОГО ЭКРАНА
