@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   
   <style>
+    /* ВАШ СТИЛЬ ОСТАЁТСЯ БЕЗ ИЗМЕНЕНИЙ */
     * {
       margin: 0;
       padding: 0;
@@ -887,10 +888,37 @@
       applyLanguage(e.target.value);
     });
 
-    // форма – уведомление
+    // ============================================
+    // ЧУДО: форма реально отправляет в WhatsApp
+    // ============================================
     document.getElementById('quickForm').addEventListener('submit', function(e) {
-      e.preventDefault();
-      alert(translations[currentLang].formSubmit + ' ✓');
+      e.preventDefault(); // не перезагружаем страницу
+
+      // собираем данные
+      const name = document.getElementById('formName').value.trim();
+      const email = document.getElementById('formEmail').value.trim();
+      const phone = document.getElementById('formPhone').value.trim();
+      const message = document.getElementById('formMsg').value.trim();
+
+      // базовая проверка
+      if (!name || !email || !phone) {
+        alert('Пожалуйста, заполните имя, email и телефон');
+        return;
+      }
+
+      // формируем текст для WhatsApp (с эмодзи и переносами)
+      const text = `🏡 *Новая заявка с plotvi.com*%0A%0A👤 *Имя:* ${name}%0A📧 *Email:* ${email}%0A📱 *Телефон:* ${phone}%0A💬 *Сообщение:* ${message || '—'}`;
+
+      // ваш номер (без + и пробелов)
+      const phoneNumber = '18299948888'; // +1 (829) 994-8888
+
+      // открываем WhatsApp в новой вкладке
+      window.open(`https://wa.me/${phoneNumber}?text=${text}`, '_blank');
+
+      // можно показать сообщение (опционально)
+      alert('✓ Заявка открыта в WhatsApp — осталось только отправить');
+      
+      // очищаем форму
       this.reset();
     });
 
