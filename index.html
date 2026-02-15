@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   
   <style>
-    /* ВАШ СТИЛЬ ОСТАЁТСЯ БЕЗ ИЗМЕНЕНИЙ */
+    /* СТИЛИ БЕЗ ИЗМЕНЕНИЙ - КАК В ВАШЕМ ФАЙЛЕ */
     * {
       margin: 0;
       padding: 0;
@@ -28,7 +28,6 @@
       margin: 0 auto;
       padding: 0 24px;
     }
-    /* header */
     header {
       background: #ffffff;
       box-shadow: 0 4px 20px rgba(0,0,0,0.03);
@@ -76,7 +75,6 @@
       font-weight: 500;
       cursor: pointer;
     }
-    /* hero */
     .hero {
       background: linear-gradient(135deg, #0b1a33, #102a43);
       color: white;
@@ -165,7 +163,6 @@
       border-radius: 24px;
       box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5);
     }
-    /* sections */
     .section {
       padding: 80px 0;
     }
@@ -185,7 +182,6 @@
       background: #2563eb;
       border-radius: 4px;
     }
-    /* services */
     .services-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(270px,1fr));
@@ -215,7 +211,6 @@
     .service-card p {
       color: #475569;
     }
-    /* portfolio — стильные текстовые карточки (без фото) */
     .portfolio-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px,1fr));
@@ -298,7 +293,6 @@
       color: #fbbf24;
       font-size: 20px;
     }
-    /* contact + form */
     .contact-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -390,7 +384,6 @@
       background: #1d4ed8;
       transform: scale(1.02);
     }
-    /* faq */
     .faq-item {
       background: white;
       border-radius: 24px;
@@ -416,7 +409,6 @@
     .faq-item.active .faq-answer {
       max-height: 300px;
     }
-    /* footer */
     footer {
       background: #0f172a;
       color: #cbd5e1;
@@ -555,7 +547,7 @@
     </div>
   </section>
 
-  <!-- ПОРТФОЛИО: 6 стильных текстовых карточек вместо фото -->
+  <!-- ПОРТФОЛИО: 6 стильных текстовых карточек -->
   <section class="section" id="portfolio">
     <div class="container">
       <h2 class="section-title" id="portfolioTitle">Selected projects</h2>
@@ -730,42 +722,6 @@
         footerServTitle: 'Services', footerServ1: 'Turnkey construction', footerServ2: 'Architectural design', footerServ3: 'Legal & immigration', footerServ4: 'Management',
         footerContact: 'Contact', footerLocation: 'Sosúa, DR', footerRights: 'All rights reserved.'
       },
-      es: {
-        navHome: 'Inicio', navAbout: 'Sobre Nosotros', navServices: 'Servicios', navProjects: 'Proyectos', navContact: 'Contacto',
-        heroTitle: 'Construcción inmobiliaria<br>en República Dominicana',
-        heroSub: 'Villas llave en mano · Asesoría legal · Inversiones · Sosúa, Cabarete, Punta Cana',
-        ctaContact: 'Contáctenos', ctaProjects: 'Nuestros proyectos',
-        statYears: 'años de experiencia', statVillas: 'villas construidas',
-        aboutTitle: 'Sobre Vladis P.Plot',
-        aboutText1: 'Fundada en 2007, somos un socio de confianza en construcción de lujo y gestión inmobiliaria en la costa norte de República Dominicana.',
-        aboutText2: 'Nuestro equipo ofrece desarrollo de ciclo completo: diseño arquitectónico, permisos, entrega y servicio postventa. También brindamos apoyo legal y migratorio.',
-        servicesTitle: 'Nuestros servicios',
-        service1Title: 'Construcción llave en mano', service1Desc: 'Villas, apartamentos, complejos – desde cimientos hasta acabados.',
-        service2Title: 'Diseño arquitectónico', service2Desc: 'Visualización 3D, proyectos personalizados, permisos.',
-        service3Title: 'Asesoría legal', service3Desc: 'Registro de propiedad (deslinde), contratos, debida diligencia.',
-        service4Title: 'Inmigración', service4Desc: 'Visas de residencia, residencia temporal y permanente.',
-        service5Title: 'Gestión de propiedades', service5Desc: 'Alquiler, mantenimiento, cuidado.',
-        service6Title: 'Consultoría de inversiones', service6Desc: 'Análisis ROI, estudio de mercado, selección de proyectos.',
-        portfolioTitle: 'Proyectos destacados',
-        project1Name: 'Perla Marina', proj1Loc: 'Sosúa, Costa Norte', proj1Desc: 'Elegante villa de 115 m² con jardín tropical, 3 dormitorios, terraza privada. Comunidad estilo resort.', proj1Price: '$395,000',
-        project2Name: 'Sea Horse Ranch', proj2Loc: 'Cabarete, comunidad cerrada', proj2Desc: 'Exclusiva villa de 500 m² con vista al mar, piscina privada, 5 suites, cuarto de servicio. Ultra lujo.', proj2Price: '$1,450,000',
-        project3Name: 'Sosúa Ocean Village', proj3Loc: 'Sosúa, acantilado', proj3Desc: 'Villa panorámica de 300 m², ventanales, piscina infinita, acceso directo al océano.', proj3Price: '$895,000',
-        project4Name: 'Cabarete Hills', proj4Loc: 'Cabarete, colinas', proj4Desc: 'Moderna villa de diseño 280 m², concepto abierto, terraza rooftop, vista 360° montaña y mar.', proj4Price: '$675,000',
-        project5Name: 'Panorama Village', proj5Loc: 'Sosúa, vista bahía', proj5Desc: 'Amplia villa de lujo 450 m², 6 habitaciones, cine, gimnasio, con vista a la bahía de Sosúa.', proj5Price: '$1,190,000',
-        project6Name: 'Campo del Mar', proj6Loc: 'Sosúa, frente a la playa', proj6Desc: 'Acogedora villa de 120 m², 2 dormitorios, 2 baños, patio tropical, a 3 minutos de la playa.', proj6Price: '$345,000',
-        faqTitle: 'Preguntas frecuentes',
-        faq1q: '¿Tiempo de construcción de una villa?', faq1a: 'Promedio 8‑12 meses para 300‑400 m², según complejidad.',
-        faq2q: '¿Ayudan con la residencia?', faq2a: 'Sí, brindamos asistencia migratoria completa para inversores y sus familias.',
-        faq3q: '¿Qué garantía ofrecen?', faq3a: '5 años en estructuras, 2 años en sistemas – todo en contrato.',
-        contactTitle: 'Contacto', contactInfoTitle: 'plotvi.com',
-        address: 'Sosúa, Puerto Plata, República Dominicana',
-        hours: 'Lun–Vie 9:00–18:00, Dom 11:00–15:00',
-        formName: 'Su nombre', formEmail: 'Correo electrónico', formPhone: 'WhatsApp / teléfono', formMsg: 'Mensaje / tipo de proyecto...', formSubmit: 'Enviar solicitud',
-        footerDesc: 'Construcción premium e inmuebles en República Dominicana desde 2007.',
-        footerNav: 'Navegación', footerHome: 'Inicio', footerAbout: 'Sobre', footerServices: 'Servicios', footerProjects: 'Proyectos',
-        footerServTitle: 'Servicios', footerServ1: 'Construcción llave en mano', footerServ2: 'Diseño arquitectónico', footerServ3: 'Legal e inmigración', footerServ4: 'Gestión',
-        footerContact: 'Contacto', footerLocation: 'Sosúa, RD', footerRights: 'Todos los derechos reservados.'
-      },
       ru: {
         navHome: 'Главная', navAbout: 'О компании', navServices: 'Услуги', navProjects: 'Проекты', navContact: 'Контакты',
         heroTitle: 'Строительство недвижимости<br>в Доминикане',
@@ -808,27 +764,20 @@
       currentLang = lang;
       const t = translations[lang];
 
-      // навигация
       document.getElementById('navHome').innerText = t.navHome;
       document.getElementById('navAbout').innerText = t.navAbout;
       document.getElementById('navServices').innerText = t.navServices;
       document.getElementById('navProjects').innerText = t.navProjects;
       document.getElementById('navContact').innerText = t.navContact;
-
-      // hero
       document.getElementById('heroTitle').innerHTML = t.heroTitle;
       document.getElementById('heroSub').innerText = t.heroSub;
       document.getElementById('ctaContact').innerText = t.ctaContact;
       document.getElementById('ctaProjects').innerText = t.ctaProjects;
       document.getElementById('statYears').innerText = t.statYears;
       document.getElementById('statVillas').innerText = t.statVillas;
-
-      // about
       document.getElementById('aboutTitle').innerText = t.aboutTitle;
       document.getElementById('aboutText1').innerText = t.aboutText1;
       document.getElementById('aboutText2').innerText = t.aboutText2;
-
-      // services
       document.getElementById('servicesTitle').innerText = t.servicesTitle;
       document.getElementById('service1Title').innerText = t.service1Title; document.getElementById('service1Desc').innerText = t.service1Desc;
       document.getElementById('service2Title').innerText = t.service2Title; document.getElementById('service2Desc').innerText = t.service2Desc;
@@ -836,8 +785,6 @@
       document.getElementById('service4Title').innerText = t.service4Title; document.getElementById('service4Desc').innerText = t.service4Desc;
       document.getElementById('service5Title').innerText = t.service5Title; document.getElementById('service5Desc').innerText = t.service5Desc;
       document.getElementById('service6Title').innerText = t.service6Title; document.getElementById('service6Desc').innerText = t.service6Desc;
-
-      // portfolio
       document.getElementById('portfolioTitle').innerText = t.portfolioTitle;
       document.getElementById('project1Name').innerText = t.project1Name; document.getElementById('proj1Loc').innerText = t.proj1Loc; document.getElementById('proj1Desc').innerText = t.proj1Desc; document.getElementById('proj1Price').innerText = t.proj1Price;
       document.getElementById('project2Name').innerText = t.project2Name; document.getElementById('proj2Loc').innerText = t.proj2Loc; document.getElementById('proj2Desc').innerText = t.proj2Desc; document.getElementById('proj2Price').innerText = t.proj2Price;
@@ -845,8 +792,6 @@
       document.getElementById('project4Name').innerText = t.project4Name; document.getElementById('proj4Loc').innerText = t.proj4Loc; document.getElementById('proj4Desc').innerText = t.proj4Desc; document.getElementById('proj4Price').innerText = t.proj4Price;
       document.getElementById('project5Name').innerText = t.project5Name; document.getElementById('proj5Loc').innerText = t.proj5Loc; document.getElementById('proj5Desc').innerText = t.proj5Desc; document.getElementById('proj5Price').innerText = t.proj5Price;
       document.getElementById('project6Name').innerText = t.project6Name; document.getElementById('proj6Loc').innerText = t.proj6Loc; document.getElementById('proj6Desc').innerText = t.proj6Desc; document.getElementById('proj6Price').innerText = t.proj6Price;
-
-      // faq
       document.getElementById('faqTitle').innerText = t.faqTitle;
       document.getElementById('faq1q').innerHTML = t.faq1q + ' <i class="fas fa-chevron-down"></i>';
       document.getElementById('faq1a').innerText = t.faq1a;
@@ -854,8 +799,6 @@
       document.getElementById('faq2a').innerText = t.faq2a;
       document.getElementById('faq3q').innerHTML = t.faq3q + ' <i class="fas fa-chevron-down"></i>';
       document.getElementById('faq3a').innerText = t.faq3a;
-
-      // contact
       document.getElementById('contactTitle').innerText = t.contactTitle;
       document.getElementById('contactInfoTitle').innerText = t.contactInfoTitle;
       document.getElementById('address').innerText = t.address;
@@ -865,8 +808,6 @@
       document.getElementById('formPhone').placeholder = t.formPhone;
       document.getElementById('formMsg').placeholder = t.formMsg;
       document.getElementById('formSubmit').innerText = t.formSubmit;
-
-      // footer
       document.getElementById('footerDesc').innerText = t.footerDesc;
       document.getElementById('footerNav').innerText = t.footerNav;
       document.getElementById('footerHome').innerText = t.footerHome;
@@ -883,42 +824,39 @@
       document.getElementById('footerRights').innerText = t.footerRights;
     }
 
-    // переключатель языка
     document.getElementById('langSwitcher').addEventListener('change', function(e) {
       applyLanguage(e.target.value);
     });
 
     // ============================================
-    // ЧУДО: форма реально отправляет в WhatsApp
+    // ИСПРАВЛЕННАЯ ФОРМА — ВСЁ НА АНГЛИЙСКОМ
     // ============================================
     document.getElementById('quickForm').addEventListener('submit', function(e) {
-      e.preventDefault(); // не перезагружаем страницу
+      e.preventDefault();
 
-      // собираем данные
       const name = document.getElementById('formName').value.trim();
       const email = document.getElementById('formEmail').value.trim();
       const phone = document.getElementById('formPhone').value.trim();
       const message = document.getElementById('formMsg').value.trim();
 
-      // базовая проверка
       if (!name || !email || !phone) {
-        alert('Пожалуйста, заполните имя, email и телефон');
+        alert('Please fill in your name, email and phone');
         return;
       }
 
-      // формируем текст для WhatsApp (с эмодзи и переносами)
-      const text = `🏡 *Новая заявка с plotvi.com*%0A%0A👤 *Имя:* ${name}%0A📧 *Email:* ${email}%0A📱 *Телефон:* ${phone}%0A💬 *Сообщение:* ${message || '—'}`;
-
-      // ваш номер (без + и пробелов)
-      const phoneNumber = '18299948888'; // +1 (829) 994-8888
-
-      // открываем WhatsApp в новой вкладке
-      window.open(`https://wa.me/${phoneNumber}?text=${text}`, '_blank');
-
-      // можно показать сообщение (опционально)
-      alert('✓ Заявка открыта в WhatsApp — осталось только отправить');
+      // ВАЖНО: сообщение полностью на английском
+      const text = `🏡 *New inquiry from plotvi.com*%0A%0A👤 *Name:* ${name}%0A📧 *Email:* ${email}%0A📱 *Phone:* ${phone}%0A💬 *Message:* ${message || '—'}`;
       
-      // очищаем форму
+      // Ваш номер
+      const phoneNumber = '18299948888';
+      
+      // Открываем WhatsApp
+      window.open(`https://wa.me/${phoneNumber}?text=${text}`, '_blank');
+      
+      // Благодарность на английском
+      alert('✅ Thank you! The request has been opened in WhatsApp. Just press "Send"');
+      
+      // Очищаем форму
       this.reset();
     });
 
@@ -928,15 +866,10 @@
         const item = this.parentNode;
         item.classList.toggle('active');
         const icon = this.querySelector('i');
-        if (item.classList.contains('active')) {
-          icon.className = 'fas fa-chevron-up';
-        } else {
-          icon.className = 'fas fa-chevron-down';
-        }
+        icon.className = item.classList.contains('active') ? 'fas fa-chevron-up' : 'fas fa-chevron-down';
       });
     });
 
-    // установка английского по умолчанию
     applyLanguage('en');
   </script>
 </body>
