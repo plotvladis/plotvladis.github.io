@@ -527,7 +527,7 @@
           <li><a href="#contact" id="navContact">Contact</a></li>
         </ul>
       </nav>
-      <!-- ПОНЯТНЫЙ ПЕРЕКЛЮЧАТЕЛЬ С ФЛАГАМИ -->
+      <!-- ПОНЯТНЫЙ ПЕРЕКЛЮЧАТЕЛЬ С ФЛАГАМИ (только EN и ES) -->
       <div class="language-selector">
         <button class="lang-btn active" data-lang="en" id="langEn">
           <i class="fas fa-flag-usa"></i>
@@ -536,10 +536,6 @@
         <button class="lang-btn" data-lang="es" id="langEs">
           <i class="fas fa-flag-spain"></i>
           <span>ES</span>
-        </button>
-        <button class="lang-btn" data-lang="ru" id="langRu">
-          <i class="fas fa-flag-ru"></i>
-          <span>RU</span>
         </button>
       </div>
     </div>
@@ -731,7 +727,7 @@
     // язык по умолчанию английский
     let currentLang = 'en';
 
-    // словарь переводов с ПОЛНЫМ испанским
+    // словарь переводов (только EN и ES)
     const translations = {
       en: {
         navHome: 'Home', navAbout: 'About', navServices: 'Services', navProjects: 'Projects', navContact: 'Contact',
@@ -804,42 +800,6 @@
         footerNav: 'Navegación', footerHome: 'Inicio', footerAbout: 'Nosotros', footerServices: 'Servicios', footerProjects: 'Proyectos',
         footerServTitle: 'Servicios', footerServ1: 'Construcción llave en mano', footerServ2: 'Diseño arquitectónico', footerServ3: 'Legal e inmigración', footerServ4: 'Gestión',
         footerContact: 'Contacto', footerLocation: 'Sosúa, RD', footerRights: 'Todos los derechos reservados.'
-      },
-      ru: {
-        navHome: 'Главная', navAbout: 'О компании', navServices: 'Услуги', navProjects: 'Проекты', navContact: 'Контакты',
-        heroTitle: 'Строительство недвижимости<br>в Доминикане',
-        heroSub: 'Виллы под ключ · Юридическая поддержка · Инвестиции · Сосуа, Кабарете, Пунта-Кана',
-        ctaContact: 'Связаться', ctaProjects: 'Наши проекты',
-        statYears: 'лет опыта', statVillas: 'вилл построено',
-        aboutTitle: 'О Владисе П.Плоте',
-        aboutText1: 'Основанная в 2007 году, мы стали надежным партнером в элитном строительстве и управлении недвижимостью на северном побережье Доминиканы.',
-        aboutText2: 'Наша команда предлагает полный цикл: от архитектуры и разрешений до сдачи объекта и послепродажного обслуживания. Также юридическая и иммиграционная поддержка.',
-        servicesTitle: 'Наши услуги',
-        service1Title: 'Строительство под ключ', service1Desc: 'Виллы, апартаменты, комплексы – от фундамента до отделки.',
-        service2Title: 'Архитектурное проектирование', service2Desc: '3D-визуализация, индивидуальные проекты, разрешения.',
-        service3Title: 'Юридическое сопровождение', service3Desc: 'Оформление собственности (deslinde), контракты, due diligence.',
-        service4Title: 'Иммиграция', service4Desc: 'Резидентские визы, временный и постоянный вид на жительство.',
-        service5Title: 'Управление недвижимостью', service5Desc: 'Аренда, обслуживание, уход.',
-        service6Title: 'Инвестиционные консультации', service6Desc: 'Анализ ROI, исследование рынка, подбор проектов.',
-        portfolioTitle: 'Избранные проекты',
-        project1Name: 'Perla Marina', proj1Loc: 'Сосуа, Северное побережье', proj1Desc: 'Элегантная вилла 115 м² с тропическим садом, 3 спальни, приватная терраса. Курортный стиль.', proj1Price: '$395,000',
-        project2Name: 'Sea Horse Ranch', proj2Loc: 'Кабарете, охраняемый поселок', proj2Desc: 'Эксклюзивная вилла 500 м² с видом на океан, приватный бассейн, 5 сюит, комната персонала.', proj2Price: '$1,450,000',
-        project3Name: 'Sosúa Ocean Village', proj3Loc: 'Сосуа, скалы', proj3Desc: 'Панорамная вилла 300 м², окна в пол, бесконечный бассейн, прямой доступ к океану.', proj3Price: '$895,000',
-        project4Name: 'Cabarete Hills', proj4Loc: 'Кабарете, холмы', proj4Desc: 'Современная дизайнерская вилла 280 м², открытая планировка, терраса на крыше, вид 360°.', proj4Price: '$675,000',
-        project5Name: 'Panorama Village', proj5Loc: 'Сосуа, вид на залив', proj5Desc: 'Просторная вилла люкс 450 м², 6 спален, кинозал, тренажерный зал, вид на залив Сосуа.', proj5Price: '$1,190,000',
-        project6Name: 'Campo del Mar', proj6Loc: 'Сосуа, пляжная линия', proj6Desc: 'Уютная вилла 120 м², 2 спальни, 2 ванные, тропический патио, 3 минуты до пляжа.', proj6Price: '$345,000',
-        faqTitle: 'Часто задаваемые вопросы',
-        faq1q: 'Срок строительства виллы?', faq1a: 'В среднем 8‑12 месяцев для 300‑400 м², в зависимости от сложности.',
-        faq2q: 'Помогаете с резиденством?', faq2a: 'Да, мы предоставляем полное иммиграционное сопровождение для инвесторов и их семей.',
-        faq3q: 'Какие гарантии?', faq3a: '5 лет на конструкции, 2 года на системы – всё прописано в договоре.',
-        contactTitle: 'Контакты', contactInfoTitle: 'plotvi.com',
-        address: 'Сосуа, Пуэрто-Плата, Доминиканская Республика',
-        hours: 'Пн–Пт 9:00–18:00, Вс 11:00–15:00',
-        formName: 'Ваше имя', formEmail: 'Email', formPhone: 'WhatsApp / телефон', formMsg: 'Сообщение / тип проекта...', formSubmit: 'Отправить заявку',
-        footerDesc: 'Премиальное строительство и недвижимость в Доминикане с 2007 года.',
-        footerNav: 'Навигация', footerHome: 'Главная', footerAbout: 'О нас', footerServices: 'Услуги', footerProjects: 'Проекты',
-        footerServTitle: 'Услуги', footerServ1: 'Строительство под ключ', footerServ2: 'Архитектура', footerServ3: 'Юридическое и иммиграция', footerServ4: 'Управление',
-        footerContact: 'Контакты', footerLocation: 'Сосуа, ДР', footerRights: 'Все права защищены.'
       }
     };
 
@@ -916,7 +876,6 @@
     // Обработчики для кнопок языка
     document.getElementById('langEn').addEventListener('click', () => applyLanguage('en'));
     document.getElementById('langEs').addEventListener('click', () => applyLanguage('es'));
-    document.getElementById('langRu').addEventListener('click', () => applyLanguage('ru'));
 
     // ============================================
     // ИСПРАВЛЕННАЯ ФОРМА — БЕЗ БЕЛОГО ЭКРАНА
