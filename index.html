@@ -47,6 +47,7 @@
       color: #0f172a;
       text-decoration: none;
       letter-spacing: -0.3px;
+      white-space: nowrap;
     }
     .logo span {
       color: #2563eb;
@@ -66,7 +67,7 @@
     nav a:hover {
       color: #2563eb;
     }
-    /* Гамбургер-меню для мобильных */
+    /* Гамбургер-меню */
     .mobile-menu-btn {
       display: none;
       background: none;
@@ -81,7 +82,7 @@
     .mobile-menu-btn:hover {
       color: #1d4ed8;
     }
-    /* Понятный переключатель с эмодзи-флагами */
+    /* Переключатель языков */
     .language-selector {
       display: flex;
       gap: 4px;
@@ -162,19 +163,12 @@
       .language-selector {
         margin-left: auto;
       }
-      
-      .hero-grid {
-        grid-template-columns: 1fr;
-      }
-      
-      .hero h1 {
-        font-size: 36px;
-      }
     }
+    /* Герой-секция с улучшенной адаптацией */
     .hero {
       background: linear-gradient(135deg, #0b1a33, #102a43);
       color: white;
-      padding: 100px 0 120px;
+      padding: 80px 0 100px;
       position: relative;
     }
     .hero::after {
@@ -259,6 +253,63 @@
       border-radius: 24px;
       box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5);
     }
+    /* Адаптация для мобильных */
+    @media (max-width: 800px) {
+      .hero {
+        padding: 60px 0 80px;
+      }
+      
+      .hero-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+      
+      .hero h1 {
+        font-size: 36px;
+        line-height: 1.3;
+        word-break: break-word;
+      }
+      
+      .hero p {
+        font-size: 16px;
+        max-width: 100%;
+      }
+      
+      .btn-group {
+        flex-direction: column;
+        width: 100%;
+      }
+      
+      .btn {
+        width: 100%;
+        text-align: center;
+        padding: 16px 24px;
+        font-size: 16px;
+      }
+      
+      .hero-stats {
+        justify-content: space-around;
+        gap: 15px;
+      }
+      
+      .stat-number {
+        font-size: 28px;
+      }
+      
+      .stat-label {
+        font-size: 13px;
+      }
+      
+      .hero-image {
+        order: -1;
+      }
+      
+      .hero-image img {
+        max-height: 300px;
+        object-fit: cover;
+      }
+    }
+    /* Остальные стили без изменений */
     .section {
       padding: 80px 0;
     }
@@ -561,6 +612,20 @@
     .whatsapp-float:hover {
       transform: scale(1.1);
     }
+    @media (max-width: 800px) {
+      .contact-grid, .footer-grid {
+        grid-template-columns: 1fr;
+      }
+      .section {
+        padding: 60px 0;
+      }
+      .section-title {
+        font-size: 28px;
+      }
+      .footer-grid {
+        gap: 30px;
+      }
+    }
   </style>
 </head>
 <body>
@@ -578,11 +643,9 @@
           <li><a href="#contact" id="navContact">Contact</a></li>
         </ul>
       </nav>
-      <!-- Гамбургер-меню для мобильных -->
       <button class="mobile-menu-btn" id="mobileMenuBtn">
         <i class="fas fa-bars"></i>
       </button>
-      <!-- Переключатель с эмодзи-флагами -->
       <div class="language-selector">
         <button class="lang-btn active" data-lang="en" id="langEn">
           <span class="flag">🇺🇸</span>
@@ -649,12 +712,10 @@
     </div>
   </section>
 
-  <!-- ПОРТФОЛИО: 6 стильных текстовых карточек -->
   <section class="section" id="portfolio">
     <div class="container">
       <h2 class="section-title" id="portfolioTitle">Selected projects</h2>
       <div class="portfolio-grid">
-        
         <div class="text-card">
           <div class="project-icon"><i class="fas fa-umbrella-beach"></i></div>
           <h4 id="project1Name">Perla Marina</h4>
@@ -783,10 +844,8 @@
   <a href="https://wa.me/18299948888" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
 
   <script>
-    // язык по умолчанию английский
     let currentLang = 'en';
 
-    // словарь переводов с ПОЛНЫМ испанским
     const translations = {
       en: {
         navHome: 'Home', navAbout: 'About', navServices: 'Services', navProjects: 'Projects', navContact: 'Contact',
@@ -961,21 +1020,17 @@
       document.getElementById('footerLocation').innerText = t.footerLocation;
       document.getElementById('footerRights').innerText = t.footerRights;
 
-      // Обновляем активную кнопку языка
       document.querySelectorAll('.lang-btn').forEach(btn => {
         btn.classList.remove('active');
       });
       document.getElementById(`lang${lang.charAt(0).toUpperCase() + lang.slice(1)}`).classList.add('active');
     }
 
-    // Обработчики для кнопок языка
     document.getElementById('langEn').addEventListener('click', () => applyLanguage('en'));
     document.getElementById('langEs').addEventListener('click', () => applyLanguage('es'));
     document.getElementById('langRu').addEventListener('click', () => applyLanguage('ru'));
 
-    // ============================================
-    // ГАМБУРГЕР-МЕНЮ ДЛЯ МОБИЛЬНЫХ
-    // ============================================
+    // Гамбургер-меню
     const mobileBtn = document.getElementById('mobileMenuBtn');
     const navMenu = document.querySelector('nav ul');
 
@@ -983,14 +1038,9 @@
       mobileBtn.addEventListener('click', function() {
         navMenu.classList.toggle('active');
         const icon = this.querySelector('i');
-        if (navMenu.classList.contains('active')) {
-          icon.className = 'fas fa-times';
-        } else {
-          icon.className = 'fas fa-bars';
-        }
+        icon.className = navMenu.classList.contains('active') ? 'fas fa-times' : 'fas fa-bars';
       });
 
-      // Закрывать меню при клике на ссылку
       document.querySelectorAll('nav ul li a').forEach(link => {
         link.addEventListener('click', () => {
           navMenu.classList.remove('active');
@@ -998,7 +1048,6 @@
         });
       });
 
-      // Закрывать при клике вне меню
       document.addEventListener('click', (e) => {
         if (!navMenu.contains(e.target) && !mobileBtn.contains(e.target)) {
           navMenu.classList.remove('active');
@@ -1007,9 +1056,7 @@
       });
     }
 
-    // ============================================
-    // ИСПРАВЛЕННАЯ ФОРМА — БЕЗ БЕЛОГО ЭКРАНА
-    // ============================================
+    // Форма в WhatsApp
     document.getElementById('quickForm').addEventListener('submit', function(e) {
       e.preventDefault();
 
@@ -1023,21 +1070,13 @@
         return;
       }
 
-      // Формируем сообщение на английском
       const text = `🏡 *New inquiry from plotvi.com*%0A%0A👤 *Name:* ${name}%0A📧 *Email:* ${email}%0A📱 *Phone:* ${phone}%0A💬 *Message:* ${message || '—'}`;
-      
-      // Ваш номер
       const phoneNumber = '18299948888';
       const whatsappUrl = `https://wa.me/${phoneNumber}?text=${text}`;
       
-      // 1. Сначала показываем благодарственное сообщение
       alert('✅ Thank you! You will now be redirected to WhatsApp to send your request.');
-      
-      // 2. Очищаем форму (чтобы данные не отправились повторно)
       this.reset();
       
-      // 3. НЕБОЛЬШАЯ ЗАДЕРЖКА перед открытием WhatsApp
-      //    Это самая частая причина белого экрана — браузер не успевает.
       setTimeout(function() {
         window.open(whatsappUrl, '_blank');
       }, 300);
@@ -1053,7 +1092,6 @@
       });
     });
 
-    // установка английского по умолчанию
     applyLanguage('en');
   </script>
 </body>
