@@ -65,10 +65,10 @@
     nav a:hover {
       color: #2563eb;
     }
-    /* ПОНЯТНЫЙ ПЕРЕКЛЮЧАТЕЛЬ ЯЗЫКОВ */
+    /* ПОНЯТНЫЙ ПЕРЕКЛЮЧАТЕЛЬ ЯЗЫКОВ — ОБА ФЛАГА ЭМОДЗИ */
     .language-selector {
       display: flex;
-      gap: 4px;
+      gap: 6px;
       background: #f1f5f9;
       padding: 4px;
       border-radius: 48px;
@@ -77,7 +77,7 @@
     .lang-btn {
       background: transparent;
       border: none;
-      padding: 6px 12px;
+      padding: 6px 14px;
       border-radius: 40px;
       font-size: 15px;
       font-weight: 600;
@@ -86,10 +86,11 @@
       color: #64748b;
       display: flex;
       align-items: center;
-      gap: 4px;
+      gap: 6px;
     }
-    .lang-btn i {
-      font-size: 18px;
+    .lang-btn .emoji-flag {
+      font-size: 1.3rem;
+      line-height: 1;
     }
     .lang-btn.active {
       background: #2563eb;
@@ -103,12 +104,11 @@
     /* На мобильных — только флаги + текст */
     @media (max-width: 800px) {
       .lang-btn {
-        padding: 6px 8px;
+        padding: 6px 10px;
         font-size: 13px;
       }
-      .lang-btn i {
-        font-size: 16px;
-        margin-right: 2px;
+      .lang-btn .emoji-flag {
+        font-size: 1.2rem;
       }
     }
     /* Остальные стили без изменений */
@@ -527,14 +527,14 @@
           <li><a href="#contact" id="navContact">Contact</a></li>
         </ul>
       </nav>
-      <!-- ПОНЯТНЫЙ ПЕРЕКЛЮЧАТЕЛЬ С ФЛАГАМИ (только EN и ES) -->
+      <!-- ПОНЯТНЫЙ ПЕРЕКЛЮЧАТЕЛЬ С ЭМОДЗИ-ФЛАГАМИ (🇺🇸 и 🇪🇸) -->
       <div class="language-selector">
         <button class="lang-btn active" data-lang="en" id="langEn">
-          <i class="fas fa-flag-usa"></i>
+          <span class="emoji-flag">🇺🇸</span>
           <span>EN</span>
         </button>
         <button class="lang-btn" data-lang="es" id="langEs">
-          <i class="fas fa-flag-spain"></i>
+          <span class="emoji-flag">🇪🇸</span>
           <span>ES</span>
         </button>
       </div>
@@ -544,7 +544,8 @@
   <section class="hero" id="home">
     <div class="container hero-grid">
       <div>
-        <h1 id="heroTitle">Real Estate <br>in Dominican Republic</h1>
+        <!-- ЗАГОЛОВОК ИЗМЕНЁН: EN + ES по запросу -->
+        <h1 id="heroTitle">Real estate in the Dominican Republic</h1>
         <p id="heroSub">Turnkey villas · Legal support · Investments · Sosúa, Cabarete, Punta Cana</p>
         <div class="btn-group">
           <a href="#contact" class="btn btn-primary" id="ctaContact">Contact us</a>
@@ -670,7 +671,7 @@
       <h2 class="section-title" id="contactTitle">Contact</h2>
       <div class="contact-grid">
         <div class="contact-info">
-          <h3 id="contactInfoTitle">PLOTVI</h3>
+          <h3 id="contactInfoTitle">plotvi.com</h3>
           <div class="contact-details">
             <p><i class="fas fa-map-marker-alt"></i> <span id="address">Sosúa, Puerto Plata, Dominican Republic</span></p>
             <p><i class="fas fa-phone-alt"></i> <strong>+1 (829) 994-8888</strong></p>
@@ -727,11 +728,11 @@
     // язык по умолчанию английский
     let currentLang = 'en';
 
-    // словарь переводов (только EN и ES)
+    // словарь переводов (только EN и ES) — заголовки изменены согласно запросу
     const translations = {
       en: {
         navHome: 'Home', navAbout: 'About', navServices: 'Services', navProjects: 'Projects', navContact: 'Contact',
-        heroTitle: 'Real Estate <br>in Dominican Republic',
+        heroTitle: 'Real estate in the Dominican Republic',   // ← изменено
         heroSub: 'Turnkey villas · Legal support · Investments · Sosúa, Cabarete, Punta Cana',
         ctaContact: 'Contact us', ctaProjects: 'Our projects',
         statYears: 'years experience', statVillas: 'villas built',
@@ -767,7 +768,7 @@
       },
       es: {
         navHome: 'Inicio', navAbout: 'Nosotros', navServices: 'Servicios', navProjects: 'Proyectos', navContact: 'Contacto',
-        heroTitle: 'Inmobiliaria<br>en República Dominicana',
+        heroTitle: 'Bienes raíces en República Dominicana',   // ← изменённый испанский вариант
         heroSub: 'Villas llave en mano · Asesoría legal · Inversiones · Sosúa, Cabarete, Punta Cana',
         ctaContact: 'Contáctenos', ctaProjects: 'Nuestros proyectos',
         statYears: 'años de experiencia', statVillas: 'villas construidas',
@@ -812,7 +813,7 @@
       document.getElementById('navServices').innerText = t.navServices;
       document.getElementById('navProjects').innerText = t.navProjects;
       document.getElementById('navContact').innerText = t.navContact;
-      document.getElementById('heroTitle').innerHTML = t.heroTitle;
+      document.getElementById('heroTitle').innerHTML = t.heroTitle;   // заголовок обновляется из словаря
       document.getElementById('heroSub').innerText = t.heroSub;
       document.getElementById('ctaContact').innerText = t.ctaContact;
       document.getElementById('ctaProjects').innerText = t.ctaProjects;
@@ -878,7 +879,7 @@
     document.getElementById('langEs').addEventListener('click', () => applyLanguage('es'));
 
     // ============================================
-    // ИСПРАВЛЕННАЯ ФОРМА — БЕЗ БЕЛОГО ЭКРАНА
+    // ИСПРАВЛЕННАЯ ФОРМА — НАДЁЖНАЯ РАБОТА НА SAFARI (iPhone)
     // ============================================
     document.getElementById('quickForm').addEventListener('submit', function(e) {
       e.preventDefault();
@@ -889,28 +890,39 @@
       const message = document.getElementById('formMsg').value.trim();
 
       if (!name || !email || !phone) {
-        alert('Please fill in your name, email and phone');
+        alert( currentLang === 'es' ? 'Por favor complete nombre, correo y teléfono' : 'Please fill in your name, email and phone' );
         return;
       }
 
-      // Формируем сообщение на английском
+      // Формируем сообщение на английском (можно было бы сделать билингва, но для простоты оставим англ)
       const text = `🏡 *New inquiry from plotvi.com*%0A%0A👤 *Name:* ${name}%0A📧 *Email:* ${email}%0A📱 *Phone:* ${phone}%0A💬 *Message:* ${message || '—'}`;
       
-      // Ваш номер
       const phoneNumber = '18299948888';
       const whatsappUrl = `https://wa.me/${phoneNumber}?text=${text}`;
       
-      // 1. Сначала показываем благодарственное сообщение
-      alert('✅ Thank you! You will now be redirected to WhatsApp to send your request.');
+      const userMessage = currentLang === 'es' ? '✅ Gracias. Serás redirigido a WhatsApp.' : '✅ Thank you. You will be redirected to WhatsApp.';
       
-      // 2. Очищаем форму (чтобы данные не отправились повторно)
+      // Очищаем форму
       this.reset();
       
-      // 3. НЕБОЛЬШАЯ ЗАДЕРЖКА перед открытием WhatsApp
-      //    Это самая частая причина белого экрана — браузер не успевает.
-      setTimeout(function() {
-        window.open(whatsappUrl, '_blank');
-      }, 300);
+      // Для мобильных Safari важно, чтобы переход произошёл из того же "события"
+      setTimeout(() => {
+        // 1. Пробуем window.open, если заблокировано — сработает прямая ссылка
+        const newTab = window.open(whatsappUrl, '_blank');
+        if (!newTab || newTab.closed || typeof newTab.closed === 'undefined') {
+          // Вручную создаем ссылку и эмулируем клик (это обходит блокировку всплывающих окон)
+          const a = document.createElement('a');
+          a.href = whatsappUrl;
+          a.target = '_blank';
+          a.rel = 'noopener noreferrer';
+          document.body.appendChild(a);
+          a.click();
+          document.body.removeChild(a);
+        }
+      }, 200); // небольшая задержка — форма успевает обновиться, и Safari не падает
+      
+      // Короткое уведомление (после открытия ссылки)
+      setTimeout(() => alert(userMessage), 300);
     });
 
     // FAQ аккордеон
