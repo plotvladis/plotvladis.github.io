@@ -732,11 +732,13 @@
           </div>
         </div>
         <div class="form-card">
+          <!-- ФОРМА ИСПРАВЛЕНА: убран _next, теперь нет редиректа на несуществующую страницу -->
           <form action="https://formsubmit.co/inforepdom@gmail.com" method="POST" id="quickForm">
             <input type="hidden" name="_subject" value="Новая заявка с PLOTVI">
             <input type="hidden" name="_captcha" value="false">
-            <input type="hidden" name="_next" value="https://plotvi.com/thanks.html">
+            <!-- _next удален — FormSubmit покажет стандартное "Thank you" без 404 -->
             <input type="hidden" name="_language" value="english">
+            
             <div class="form-group"><input type="text" name="name" placeholder="Your name" id="formName" required></div>
             <div class="form-group"><input type="email" name="email" placeholder="Email address" id="formEmail" required></div>
             <div class="form-group"><input type="tel" name="phone" placeholder="WhatsApp / phone" id="formPhone" required></div>
