@@ -41,11 +41,11 @@
       justify-content: space-between;
     }
     .logo a {
-      font-size: 26px;
-      font-weight: 700;
+      font-size: 28px;
+      font-weight: 800;
       color: #0f172a;
       text-decoration: none;
-      letter-spacing: -0.3px;
+      letter-spacing: -0.5px;
     }
     .logo span {
       color: #2563eb;
@@ -516,7 +516,8 @@
   <header>
     <div class="container header-flex">
       <div class="logo">
-        <a href="/"><span>plotvi</span>.com</a>
+        <!-- ЛОГОТИП ИЗМЕНЁН НА PLOTVI (заглавными) -->
+        <a href="/"><span>PLOTVI</span></a>
       </div>
       <nav>
         <ul>
@@ -671,7 +672,7 @@
       <h2 class="section-title" id="contactTitle">Contact</h2>
       <div class="contact-grid">
         <div class="contact-info">
-          <h3 id="contactInfoTitle">plotvi.com</h3>
+          <h3 id="contactInfoTitle">PLOTVI</h3>
           <div class="contact-details">
             <p><i class="fas fa-map-marker-alt"></i> <span id="address">Sosúa, Puerto Plata, Dominican Republic</span></p>
             <p><i class="fas fa-phone-alt"></i> <strong>+1 (829) 994-8888</strong></p>
@@ -686,11 +687,18 @@
           </div>
         </div>
         <div class="form-card">
-          <form id="quickForm">
-            <div class="form-group"><input type="text" placeholder="Your name" id="formName" required></div>
-            <div class="form-group"><input type="email" placeholder="Email address" id="formEmail" required></div>
-            <div class="form-group"><input type="tel" placeholder="WhatsApp / phone" id="formPhone" required></div>
-            <div class="form-group"><textarea rows="3" placeholder="Message / project type..." id="formMsg"></textarea></div>
+          <!-- ФОРМА ТЕПЕРЬ ОТПРАВЛЯЕТСЯ НА EMAIL через FormSubmit.co (РАБОТАЕТ В SAFARI) -->
+          <form action="https://formsubmit.co/inforepdom@gmail.com" method="POST" id="quickForm">
+            <!-- Поля для FormSubmit (защита от спама, редирект) -->
+            <input type="hidden" name="_subject" value="Новая заявка с PLOTVI">
+            <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="_next" value="https://plotvi.com/thanks.html"> <!-- при отсутствии своего можно удалить, но лучше создать простую страницу "спасибо", либо убрать и будет возврат на ту же -->
+            <input type="hidden" name="_language" value="english">
+            
+            <div class="form-group"><input type="text" name="name" placeholder="Your name" id="formName" required></div>
+            <div class="form-group"><input type="email" name="email" placeholder="Email address" id="formEmail" required></div>
+            <div class="form-group"><input type="tel" name="phone" placeholder="WhatsApp / phone" id="formPhone" required></div>
+            <div class="form-group"><textarea rows="3" name="message" placeholder="Message / project type..." id="formMsg"></textarea></div>
             <button type="submit" class="submit-btn" id="formSubmit">Send request</button>
           </form>
         </div>
@@ -701,7 +709,7 @@
   <footer>
     <div class="container footer-grid">
       <div class="footer-col">
-        <h3>plotvi.com</h3>
+        <h3>PLOTVI</h3>
         <p id="footerDesc">Premium construction & real estate in Dominican Republic since 2007.</p>
       </div>
       <div class="footer-col">
@@ -718,7 +726,7 @@
       </div>
     </div>
     <div class="copyright">
-      © 2026 plotvi.com — <span id="footerRights">All rights reserved.</span>
+      © 2026 PLOTVI — <span id="footerRights">All rights reserved.</span>
     </div>
   </footer>
 
@@ -732,7 +740,7 @@
     const translations = {
       en: {
         navHome: 'Home', navAbout: 'About', navServices: 'Services', navProjects: 'Projects', navContact: 'Contact',
-        heroTitle: 'Real estate in the Dominican Republic',   // ← изменено
+        heroTitle: 'Real estate in the Dominican Republic',
         heroSub: 'Turnkey villas · Legal support · Investments · Sosúa, Cabarete, Punta Cana',
         ctaContact: 'Contact us', ctaProjects: 'Our projects',
         statYears: 'years experience', statVillas: 'villas built',
@@ -757,7 +765,7 @@
         faq1q: 'Construction time for a villa?', faq1a: 'Average 8‑12 months for 300‑400 m², depending on complexity.',
         faq2q: 'Do you help with residency?', faq2a: 'Yes, we provide full immigration assistance for investors and their families.',
         faq3q: 'What guarantee do you offer?', faq3a: '5 years on structures, 2 years on systems – all written in contract.',
-        contactTitle: 'Contact', contactInfoTitle: 'plotvi.com',
+        contactTitle: 'Contact', contactInfoTitle: 'PLOTVI',
         address: 'Sosúa, Puerto Plata, Dominican Republic',
         hours: 'Mon–Fri 9:00–18:00, Sun 11:00–15:00',
         formName: 'Your name', formEmail: 'Email address', formPhone: 'WhatsApp / phone', formMsg: 'Message / project type...', formSubmit: 'Send request',
@@ -768,7 +776,7 @@
       },
       es: {
         navHome: 'Inicio', navAbout: 'Nosotros', navServices: 'Servicios', navProjects: 'Proyectos', navContact: 'Contacto',
-        heroTitle: 'Bienes raíces en República Dominicana',   // ← изменённый испанский вариант
+        heroTitle: 'Bienes raíces en República Dominicana',
         heroSub: 'Villas llave en mano · Asesoría legal · Inversiones · Sosúa, Cabarete, Punta Cana',
         ctaContact: 'Contáctenos', ctaProjects: 'Nuestros proyectos',
         statYears: 'años de experiencia', statVillas: 'villas construidas',
@@ -793,7 +801,7 @@
         faq1q: '¿Tiempo de construcción de una villa?', faq1a: 'Promedio de 8 a 12 meses para 300‑400 m², según la complejidad.',
         faq2q: '¿Ayudan con la residencia?', faq2a: 'Sí, brindamos asistencia migratoria completa para inversores y sus familias.',
         faq3q: '¿Qué garantía ofrecen?', faq3a: '5 años en estructuras, 2 años en sistemas – todo por escrito en el contrato.',
-        contactTitle: 'Contacto', contactInfoTitle: 'plotvi.com',
+        contactTitle: 'Contacto', contactInfoTitle: 'PLOTVI',
         address: 'Sosúa, Puerto Plata, República Dominicana',
         hours: 'Lun–Vie 9:00–18:00, Dom 11:00–15:00',
         formName: 'Su nombre', formEmail: 'Correo electrónico', formPhone: 'WhatsApp / teléfono', formMsg: 'Mensaje / tipo de proyecto...', formSubmit: 'Enviar solicitud',
@@ -813,7 +821,7 @@
       document.getElementById('navServices').innerText = t.navServices;
       document.getElementById('navProjects').innerText = t.navProjects;
       document.getElementById('navContact').innerText = t.navContact;
-      document.getElementById('heroTitle').innerHTML = t.heroTitle;   // заголовок обновляется из словаря
+      document.getElementById('heroTitle').innerHTML = t.heroTitle;
       document.getElementById('heroSub').innerText = t.heroSub;
       document.getElementById('ctaContact').innerText = t.ctaContact;
       document.getElementById('ctaProjects').innerText = t.ctaProjects;
@@ -877,53 +885,6 @@
     // Обработчики для кнопок языка
     document.getElementById('langEn').addEventListener('click', () => applyLanguage('en'));
     document.getElementById('langEs').addEventListener('click', () => applyLanguage('es'));
-
-    // ============================================
-    // ИСПРАВЛЕННАЯ ФОРМА — НАДЁЖНАЯ РАБОТА НА SAFARI (iPhone)
-    // ============================================
-    document.getElementById('quickForm').addEventListener('submit', function(e) {
-      e.preventDefault();
-
-      const name = document.getElementById('formName').value.trim();
-      const email = document.getElementById('formEmail').value.trim();
-      const phone = document.getElementById('formPhone').value.trim();
-      const message = document.getElementById('formMsg').value.trim();
-
-      if (!name || !email || !phone) {
-        alert( currentLang === 'es' ? 'Por favor complete nombre, correo y teléfono' : 'Please fill in your name, email and phone' );
-        return;
-      }
-
-      // Формируем сообщение на английском (можно было бы сделать билингва, но для простоты оставим англ)
-      const text = `🏡 *New inquiry from plotvi.com*%0A%0A👤 *Name:* ${name}%0A📧 *Email:* ${email}%0A📱 *Phone:* ${phone}%0A💬 *Message:* ${message || '—'}`;
-      
-      const phoneNumber = '18299948888';
-      const whatsappUrl = `https://wa.me/${phoneNumber}?text=${text}`;
-      
-      const userMessage = currentLang === 'es' ? '✅ Gracias. Serás redirigido a WhatsApp.' : '✅ Thank you. You will be redirected to WhatsApp.';
-      
-      // Очищаем форму
-      this.reset();
-      
-      // Для мобильных Safari важно, чтобы переход произошёл из того же "события"
-      setTimeout(() => {
-        // 1. Пробуем window.open, если заблокировано — сработает прямая ссылка
-        const newTab = window.open(whatsappUrl, '_blank');
-        if (!newTab || newTab.closed || typeof newTab.closed === 'undefined') {
-          // Вручную создаем ссылку и эмулируем клик (это обходит блокировку всплывающих окон)
-          const a = document.createElement('a');
-          a.href = whatsappUrl;
-          a.target = '_blank';
-          a.rel = 'noopener noreferrer';
-          document.body.appendChild(a);
-          a.click();
-          document.body.removeChild(a);
-        }
-      }, 200); // небольшая задержка — форма успевает обновиться, и Safari не падает
-      
-      // Короткое уведомление (после открытия ссылки)
-      setTimeout(() => alert(userMessage), 300);
-    });
 
     // FAQ аккордеон
     document.querySelectorAll('.faq-question').forEach(q => {
