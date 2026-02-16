@@ -190,6 +190,18 @@
         bottom: 20px;
         right: 20px;
       }
+      /* адаптация about-grid */
+      .about-grid {
+        grid-template-columns: 1fr !important;
+        gap: 30px !important;
+      }
+      .about-card {
+        padding: 30px 25px !important;
+      }
+      .about-stats {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
     }
 
     /* планшеты */
@@ -205,7 +217,7 @@
       }
     }
 
-    /* остальные стили (без изменений, кроме адаптивных) */
+    /* остальные стили */
     .hero {
       background: linear-gradient(135deg, #0b1a33, #102a43);
       color: white;
@@ -312,6 +324,108 @@
       background: #2563eb;
       border-radius: 4px;
     }
+    /* НОВАЯ СТИЛИЗАЦИЯ ABOUT — ярко, современно, сочно */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: stretch;
+    }
+    .about-card {
+      background: white;
+      border-radius: 32px;
+      padding: 40px 35px;
+      box-shadow: 0 20px 35px -8px rgba(0,0,0,0.08);
+      border: 1px solid #eef2f6;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+    .about-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 30px 45px -12px rgba(37,99,235,0.2);
+      border-color: #2563eb20;
+    }
+    .about-icon {
+      background: linear-gradient(135deg, #2563eb10, #2563eb05);
+      width: 70px;
+      height: 70px;
+      border-radius: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 25px;
+      border: 1px solid #2563eb20;
+    }
+    .about-icon i {
+      font-size: 36px;
+      color: #2563eb;
+    }
+    .about-card h3 {
+      font-size: 26px;
+      font-weight: 700;
+      margin-bottom: 20px;
+      color: #0f172a;
+      letter-spacing: -0.3px;
+    }
+    .about-card p {
+      color: #334155;
+      line-height: 1.7;
+      margin-bottom: 25px;
+      font-size: 16px;
+      flex: 1;
+    }
+    .about-stats {
+      display: flex;
+      gap: 25px;
+      margin-top: auto;
+      border-top: 1px solid #e2e8f0;
+      padding-top: 25px;
+    }
+    .about-stat-item {
+      text-align: left;
+    }
+    .about-stat-number {
+      font-size: 28px;
+      font-weight: 800;
+      color: #2563eb;
+      line-height: 1.2;
+    }
+    .about-stat-label {
+      font-size: 14px;
+      color: #64748b;
+      font-weight: 500;
+    }
+    .about-badge {
+      background: #eef2ff;
+      color: #2563eb;
+      padding: 6px 14px;
+      border-radius: 40px;
+      font-size: 14px;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 20px;
+      width: fit-content;
+    }
+    .about-image {
+      border-radius: 32px;
+      overflow: hidden;
+      height: 100%;
+      box-shadow: 0 25px 40px -12px rgba(0,0,0,0.2);
+    }
+    .about-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    .about-image:hover img {
+      transform: scale(1.03);
+    }
+
     .services-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(270px,1fr));
@@ -660,17 +774,56 @@
     </div>
   </section>
 
+  <!-- ПОЛНОСТЬЮ ПЕРЕРАБОТАННАЯ СЕКЦИЯ ABOUT — яркая, современная, стильная -->
   <section class="section" id="about">
     <div class="container">
       <h2 class="section-title" id="aboutTitle">About Vladis P.Plot</h2>
-      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; align-items: center;">
-        <div>
-          <p style="font-size: 18px; margin-bottom: 20px;" id="aboutText1">Founded in 2007, we have become a trusted partner in luxury construction and real estate management across the Dominican Republic's north coast.</p>
-          <p style="color: #475569;" id="aboutText2">Our team provides full‑cycle development: from architectural design and permits to handover and after‑sales service. We also offer legal and immigration support for foreign investors.</p>
+      
+      <div class="about-grid">
+        <!-- Левая карточка: история и ценности -->
+        <div class="about-card">
+          <div class="about-badge">
+            <i class="fas fa-flag-checkered"></i> <span id="aboutBadge">Since 2007</span>
+          </div>
+          <h3 id="aboutHeading">Trusted partner in luxury real estate</h3>
+          <p id="aboutText1">Founded in 2007, we have become a trusted partner in luxury construction and real estate management across the Dominican Republic's north coast. Our team provides full‑cycle development: from architectural design and permits to handover and after‑sales service.</p>
+          
+          <div class="about-stats">
+            <div class="about-stat-item">
+              <div class="about-stat-number">17+</div>
+              <div class="about-stat-label" id="aboutStat1">years of excellence</div>
+            </div>
+            <div class="about-stat-item">
+              <div class="about-stat-number">120+</div>
+              <div class="about-stat-label" id="aboutStat2">projects completed</div>
+            </div>
+          </div>
         </div>
-        <div>
-          <img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=800&q=80" alt="construction team" style="width:100%; border-radius: 32px;" loading="lazy">
+
+        <!-- Правая карточка: экспертиза и поддержка -->
+        <div class="about-card">
+          <div class="about-icon">
+            <i class="fas fa-scale-balanced"></i>
+          </div>
+          <h3 id="aboutLegalTitle">Legal & investment support</h3>
+          <p id="aboutText2">We offer legal and immigration support for foreign investors — property registration (deslinde), contracts, due diligence, and residency assistance. Our team ensures your investment is secure and compliant with Dominican laws.</p>
+          
+          <div class="about-stats">
+            <div class="about-stat-item">
+              <div class="about-stat-number">100%</div>
+              <div class="about-stat-label" id="aboutStat3">legal compliance</div>
+            </div>
+            <div class="about-stat-item">
+              <div class="about-stat-number">50+</div>
+              <div class="about-stat-label" id="aboutStat4">happy investors</div>
+            </div>
+          </div>
         </div>
+      </div>
+
+      <!-- Дополнительная плашка с изображением (опционально, но красиво) -->
+      <div style="margin-top: 40px; border-radius: 32px; overflow: hidden; box-shadow: 0 25px 40px -12px rgba(0,0,0,0.2);">
+        <img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1200&q=80" alt="construction team" style="width:100%; display: block;" loading="lazy">
       </div>
     </div>
   </section>
@@ -772,8 +925,15 @@
         ctaContact: 'Contact us', ctaProjects: 'Our projects',
         statYears: 'years experience', statVillas: 'villas built',
         aboutTitle: 'About Vladis P.Plot',
-        aboutText1: 'Founded in 2007, we have become a trusted partner in luxury construction and real estate management across the Dominican Republic\'s north coast.',
-        aboutText2: 'Our team provides full‑cycle development: from architectural design and permits to handover and after‑sales service. We also offer legal and immigration support for foreign investors.',
+        aboutBadge: 'Since 2007',
+        aboutHeading: 'Trusted partner in luxury real estate',
+        aboutText1: 'Founded in 2007, we have become a trusted partner in luxury construction and real estate management across the Dominican Republic\'s north coast. Our team provides full‑cycle development: from architectural design and permits to handover and after‑sales service.',
+        aboutStat1: 'years of excellence',
+        aboutStat2: 'projects completed',
+        aboutLegalTitle: 'Legal & investment support',
+        aboutText2: 'We offer legal and immigration support for foreign investors — property registration (deslinde), contracts, due diligence, and residency assistance. Our team ensures your investment is secure and compliant with Dominican laws.',
+        aboutStat3: 'legal compliance',
+        aboutStat4: 'happy investors',
         servicesTitle: 'Our services',
         service1Title: 'Turnkey construction', service1Desc: 'Villas, apartments, complexes – from foundation to finishing.',
         service2Title: 'Architectural design', service2Desc: '3D visualization, custom projects, permits.',
@@ -808,8 +968,15 @@
         ctaContact: 'Contáctenos', ctaProjects: 'Nuestros proyectos',
         statYears: 'años de experiencia', statVillas: 'villas construidas',
         aboutTitle: 'Sobre Vladis P.Plot',
-        aboutText1: 'Fundada en 2007, nos hemos convertido en un socio confiable en construcción de lujo y gestión inmobiliaria en la costa norte de República Dominicana.',
-        aboutText2: 'Nuestro equipo ofrece desarrollo de ciclo completo: desde diseño arquitectónico y permisos hasta entrega y servicio postventa. También ofrecemos apoyo legal y migratorio para inversores extranjeros.',
+        aboutBadge: 'Desde 2007',
+        aboutHeading: 'Socio de confianza en bienes raíces de lujo',
+        aboutText1: 'Fundada en 2007, nos hemos convertido en un socio confiable en construcción de lujo y gestión inmobiliaria en la costa norte de República Dominicana. Nuestro equipo ofrece desarrollo de ciclo completo: desde diseño arquitectónico y permisos hasta entrega y servicio postventa.',
+        aboutStat1: 'años de excelencia',
+        aboutStat2: 'proyectos realizados',
+        aboutLegalTitle: 'Asesoría legal e inversión',
+        aboutText2: 'Ofrecemos apoyo legal y migratorio para inversores extranjeros — registro de propiedad (deslinde), contratos, debida diligencia y asistencia de residencia. Nuestro equipo asegura que su inversión esté segura y cumpla con las leyes dominicanas.',
+        aboutStat3: 'cumplimiento legal',
+        aboutStat4: 'inversores satisfechos',
         servicesTitle: 'Nuestros servicios',
         service1Title: 'Construcción llave en mano', service1Desc: 'Villas, apartamentos, complejos – desde cimientos hasta acabados.',
         service2Title: 'Diseño arquitectónico', service2Desc: 'Visualización 3D, proyectos personalizados, permisos.',
@@ -854,8 +1021,15 @@
       document.getElementById('statYears').innerText = t.statYears;
       document.getElementById('statVillas').innerText = t.statVillas;
       document.getElementById('aboutTitle').innerText = t.aboutTitle;
+      document.getElementById('aboutBadge').innerHTML = `<i class="fas fa-flag-checkered"></i> ${t.aboutBadge}`;
+      document.getElementById('aboutHeading').innerText = t.aboutHeading;
       document.getElementById('aboutText1').innerText = t.aboutText1;
+      document.getElementById('aboutStat1').innerText = t.aboutStat1;
+      document.getElementById('aboutStat2').innerText = t.aboutStat2;
+      document.getElementById('aboutLegalTitle').innerText = t.aboutLegalTitle;
       document.getElementById('aboutText2').innerText = t.aboutText2;
+      document.getElementById('aboutStat3').innerText = t.aboutStat3;
+      document.getElementById('aboutStat4').innerText = t.aboutStat4;
       document.getElementById('servicesTitle').innerText = t.servicesTitle;
       document.getElementById('service1Title').innerText = t.service1Title; document.getElementById('service1Desc').innerText = t.service1Desc;
       document.getElementById('service2Title').innerText = t.service2Title; document.getElementById('service2Desc').innerText = t.service2Desc;
