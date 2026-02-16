@@ -6,18 +6,18 @@
   <title>PLOTVI — Real Estate in Dominican Republic</title>
   <meta name="description" content="Vladis P.Plot — premium construction & real estate in Sosúa, Cabarete, Punta Cana. Turnkey villas, legal support, investments.">
   
-  <!-- Font Awesome 6 (free) -->
+  <!-- Font Awesome 6 -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   
   <style>
+    /* ===== RESET & VARIABLES ===== */
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
     }
-    
-    /* CSS переменные для тем */
+
     :root {
       --bg-primary: #f8fafc;
       --bg-secondary: #ffffff;
@@ -25,7 +25,7 @@
       --text-secondary: #475569;
       --border-light: #eef2f6;
       --card-shadow: 0 12px 30px rgba(0,0,0,0.04);
-      --header-bg: rgba(255, 255, 255, 0.9);
+      --header-bg: rgba(255, 255, 255, 0.95);
       --header-blur: blur(10px);
       --footer-bg: #0f172a;
       --footer-text: #cbd5e1;
@@ -39,7 +39,7 @@
       --text-secondary: #cbd5e1;
       --border-light: #334155;
       --card-shadow: 0 12px 30px rgba(0,0,0,0.2);
-      --header-bg: rgba(15, 23, 42, 0.9);
+      --header-bg: rgba(15, 23, 42, 0.95);
       --footer-bg: #020617;
       --footer-text: #94a3b8;
       --footer-heading: #f1f5f9;
@@ -52,30 +52,31 @@
       background-color: var(--bg-primary);
       transition: background-color 0.3s ease, color 0.2s ease;
     }
-    
+
     .container {
       max-width: 1200px;
       margin: 0 auto;
       padding: 0 20px;
+      width: 100%;
     }
-    
-    /* Улучшенный header с прозрачностью */
+
+    /* ===== HEADER ===== */
     header {
       position: sticky;
       top: 0;
-      z-index: 50;
+      z-index: 1000;
       padding: 8px 0;
       transition: all 0.3s ease;
       background: transparent;
     }
-    
+
     header.scrolled {
       background: var(--header-bg);
       backdrop-filter: var(--header-blur);
       -webkit-backdrop-filter: var(--header-blur);
       box-shadow: 0 4px 20px rgba(0,0,0,0.05);
     }
-    
+
     .header-flex {
       display: flex;
       align-items: center;
@@ -83,7 +84,7 @@
       flex-wrap: wrap;
       gap: 8px;
     }
-    
+
     .logo a {
       font-size: 26px;
       font-weight: 800;
@@ -92,36 +93,36 @@
       letter-spacing: -0.5px;
       white-space: nowrap;
     }
-    
+
     .logo span {
       color: #2563eb;
     }
-    
-    nav ul {
+
+    /* ===== DESKTOP NAV ===== */
+    .desktop-nav ul {
       display: flex;
       gap: 20px;
       list-style: none;
     }
-    
-    nav a {
+
+    .desktop-nav a {
       text-decoration: none;
       color: var(--text-primary);
       font-weight: 500;
       transition: color 0.2s;
       font-size: 15px;
     }
-    
-    nav a:hover {
+
+    .desktop-nav a:hover {
       color: #2563eb;
     }
-    
-    /* Переключатели языков и темы */
+
     .header-controls {
       display: flex;
       align-items: center;
       gap: 10px;
     }
-    
+
     .language-selector {
       display: flex;
       gap: 4px;
@@ -130,7 +131,7 @@
       border-radius: 40px;
       border: 1px solid var(--border-light);
     }
-    
+
     .lang-btn {
       background: transparent;
       border: none;
@@ -139,24 +140,23 @@
       font-size: 14px;
       font-weight: 600;
       cursor: pointer;
-      transition: all 0.2s ease;
       color: var(--text-secondary);
       display: flex;
       align-items: center;
       gap: 4px;
+      transition: all 0.2s ease;
     }
-    
+
     .lang-btn .emoji-flag {
       font-size: 1.2rem;
       line-height: 1;
     }
-    
+
     .lang-btn.active {
       background: #2563eb;
       color: white;
     }
-    
-    /* Кнопка переключения темы */
+
     .theme-toggle {
       background: var(--bg-secondary);
       border: 1px solid var(--border-light);
@@ -167,53 +167,151 @@
       align-items: center;
       justify-content: center;
       cursor: pointer;
-      transition: all 0.3s ease;
       color: var(--text-primary);
       font-size: 1.2rem;
+      transition: all 0.3s ease;
     }
-    
+
     .theme-toggle:hover {
       transform: rotate(15deg);
       background: #2563eb;
       color: white;
     }
 
-    /* Анимации при скролле */
+    /* ===== MOBILE MENU (бургер) ===== */
+    .mobile-menu-toggle {
+      display: none;
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-light);
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      color: var(--text-primary);
+      font-size: 1.2rem;
+    }
+
+    .mobile-nav {
+      display: none;
+      position: fixed;
+      top: 60px;
+      left: 0;
+      width: 100%;
+      background: var(--header-bg);
+      backdrop-filter: var(--header-blur);
+      -webkit-backdrop-filter: var(--header-blur);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      padding: 20px;
+      z-index: 999;
+      transform: translateY(-100%);
+      transition: transform 0.3s ease;
+    }
+
+    .mobile-nav.active {
+      transform: translateY(0);
+    }
+
+    .mobile-nav ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .mobile-nav a {
+      text-decoration: none;
+      color: var(--text-primary);
+      font-weight: 500;
+      font-size: 18px;
+      display: block;
+      padding: 10px;
+      border-radius: 8px;
+      transition: all 0.2s;
+    }
+
+    .mobile-nav a:hover {
+      background: #2563eb10;
+      color: #2563eb;
+    }
+
+    @media (max-width: 700px) {
+      .desktop-nav {
+        display: none;
+      }
+      
+      .mobile-menu-toggle {
+        display: flex;
+      }
+      
+      .mobile-nav {
+        display: block;
+      }
+      
+      .header-flex {
+        flex-wrap: nowrap;
+      }
+      
+      .logo a {
+        font-size: 22px;
+      }
+      
+      .header-controls {
+        gap: 5px;
+      }
+      
+      .lang-btn {
+        padding: 3px 6px;
+        font-size: 12px;
+      }
+      
+      .lang-btn .emoji-flag {
+        font-size: 1rem;
+      }
+      
+      .theme-toggle {
+        width: 36px;
+        height: 36px;
+        font-size: 1rem;
+      }
+    }
+
+    /* ===== ANIMATIONS ===== */
     .fade-up {
       opacity: 0;
       transform: translateY(30px);
       transition: opacity 0.8s ease, transform 0.8s ease;
     }
-    
+
     .fade-up.visible {
       opacity: 1;
       transform: translateY(0);
     }
-    
+
     .scale-in {
       opacity: 0;
       transform: scale(0.9);
       transition: opacity 0.8s ease, transform 0.8s ease;
     }
-    
+
     .scale-in.visible {
       opacity: 1;
       transform: scale(1);
     }
 
-    /* Задержки анимаций */
     .delay-1 { transition-delay: 0.1s; }
     .delay-2 { transition-delay: 0.2s; }
     .delay-3 { transition-delay: 0.3s; }
 
-    /* Hero секция - контент опущен ниже */
+    /* ===== HERO ===== */
     .hero {
       background: linear-gradient(135deg, #0b1a33, #102a43);
       color: white;
-      padding: 120px 0 120px;
+      padding: 100px 0 100px;
       position: relative;
     }
-    
+
     .hero::after {
       content: '';
       position: absolute;
@@ -222,34 +320,35 @@
       width: 100%;
       height: 60px;
       background: linear-gradient(to top, var(--bg-primary), transparent);
+      pointer-events: none;
     }
-    
+
     .hero-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 40px;
       align-items: center;
     }
-    
+
     .hero h1 {
       font-size: 48px;
       font-weight: 700;
       line-height: 1.2;
       margin-bottom: 20px;
     }
-    
+
     .hero p {
       font-size: 18px;
       opacity: 0.9;
       margin-bottom: 30px;
     }
-    
+
     .btn-group {
       display: flex;
       gap: 16px;
       flex-wrap: wrap;
     }
-    
+
     .btn {
       display: inline-block;
       padding: 12px 30px;
@@ -259,67 +358,79 @@
       transition: all 0.25s;
       border: 2px solid transparent;
     }
-    
+
     .btn-primary {
       background: #2563eb;
       color: white;
     }
-    
+
     .btn-primary:hover {
       background: #1d4ed8;
       transform: translateY(-3px);
       box-shadow: 0 12px 24px -8px rgba(37,99,235,0.4);
     }
-    
+
     .btn-outline {
       background: transparent;
       border-color: white;
       color: white;
     }
-    
+
     .btn-outline:hover {
       background: white;
       color: #0b1a33;
       transform: translateY(-3px);
     }
-    
+
     .hero-stats {
       display: flex;
       gap: 30px;
       margin-top: 40px;
     }
-    
+
     .stat-item {
       text-align: center;
     }
-    
+
     .stat-number {
       font-size: 32px;
       font-weight: 700;
       color: #fbbf24;
     }
-    
-    .hero-image img {
-      object-position: 50% 70%;
+
+    .hero-image {
       width: 100%;
-      max-height: 560px;
-      aspect-ratio: 3 / 4;
-      object-fit: cover;
       border-radius: 36px;
+      overflow: hidden;
       box-shadow: 0 36px 70px -30px rgba(0,0,0,0.6);
     }
-    
+
+    .hero-image img {
+      width: 100%;
+      height: auto;
+      aspect-ratio: 3/4;
+      object-fit: cover;
+      object-position: 50% 30%;
+      display: block;
+      transition: transform 0.6s ease;
+    }
+
+    .hero-image:hover img {
+      transform: scale(1.03);
+    }
+
+    /* ===== SECTIONS ===== */
     .section {
       padding: 80px 0;
     }
-    
+
     .section-title {
       font-size: 36px;
       font-weight: 700;
       margin-bottom: 50px;
       position: relative;
     }
-    
+
     .section-title:after {
       content: '';
       position: absolute;
@@ -331,14 +442,13 @@
       border-radius: 4px;
     }
 
-    /* About секция */
+    /* About */
     .about-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 40px;
-      align-items: stretch;
     }
-    
+
     .about-card {
       background: var(--bg-secondary);
       border-radius: 32px;
@@ -350,12 +460,12 @@
       display: flex;
       flex-direction: column;
     }
-    
+
     .about-card:hover {
       transform: translateY(-8px);
       box-shadow: 0 30px 45px -12px rgba(37,99,235,0.2);
     }
-    
+
     .about-icon {
       background: linear-gradient(135deg, #2563eb10, #2563eb05);
       width: 70px;
@@ -367,12 +477,12 @@
       margin-bottom: 25px;
       border: 1px solid #2563eb20;
     }
-    
+
     .about-icon i {
       font-size: 36px;
       color: #2563eb;
     }
-    
+
     .about-badge {
       background: #eef2ff;
       color: #2563eb;
@@ -386,7 +496,7 @@
       margin-bottom: 20px;
       width: fit-content;
     }
-    
+
     .about-stats {
       display: flex;
       gap: 25px;
@@ -394,11 +504,11 @@
       border-top: 1px solid var(--border-light);
       padding-top: 25px;
     }
-    
+
     .about-stat-item {
       text-align: left;
     }
-    
+
     .about-stat-number {
       font-size: 28px;
       font-weight: 800;
@@ -406,41 +516,54 @@
       line-height: 1.2;
     }
 
-    /* Сервисы */
+    .about-stat-label {
+      font-size: 14px;
+      color: var(--text-secondary);
+    }
+
+    /* Services */
     .services-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(270px,1fr));
+      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
       gap: 30px;
     }
-    
+
     .service-card {
       background: var(--bg-secondary);
       padding: 30px 24px;
       border-radius: 24px;
       box-shadow: var(--card-shadow);
-      transition: all 0.3s;
       border: 1px solid var(--border-light);
+      transition: all 0.3s;
     }
-    
+
     .service-card:hover {
       transform: translateY(-8px);
       box-shadow: 0 25px 40px -12px rgba(37,99,235,0.15);
     }
-    
+
     .service-icon {
       font-size: 42px;
       color: #2563eb;
       margin-bottom: 20px;
     }
 
-    /* Портфолио с реальными фото */
+    .service-card h3 {
+      font-size: 22px;
+      margin-bottom: 12px;
+    }
+
+    .service-card p {
+      color: var(--text-secondary);
+    }
+
+    /* Portfolio */
     .portfolio-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px,1fr));
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 30px;
-      margin-top: 30px;
     }
-    
+
     .project-card {
       background: var(--bg-secondary);
       border-radius: 28px;
@@ -449,41 +572,40 @@
       border: 1px solid var(--border-light);
       transition: all 0.3s ease;
     }
-    
+
     .project-card:hover {
       transform: translateY(-10px);
       box-shadow: 0 30px 45px -15px rgba(37,99,235,0.25);
     }
-    
+
     .project-image {
       width: 100%;
       height: 240px;
       overflow: hidden;
-      position: relative;
     }
-    
+
     .project-image img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       transition: transform 0.6s ease;
     }
-    
+
     .project-card:hover .project-image img {
       transform: scale(1.1);
     }
-    
+
     .project-content {
       padding: 28px 25px;
     }
-    
+
     .project-content h4 {
       font-size: 24px;
       font-weight: 700;
       margin-bottom: 8px;
       color: var(--text-primary);
     }
-    
+
     .project-location {
       font-size: 15px;
       color: #2563eb;
@@ -493,14 +615,13 @@
       align-items: center;
       gap: 6px;
     }
-    
+
     .project-desc {
       color: var(--text-secondary);
       margin-bottom: 20px;
       line-height: 1.6;
-      font-size: 15px;
     }
-    
+
     .project-price {
       font-weight: 700;
       color: var(--text-primary);
@@ -511,49 +632,49 @@
       align-items: center;
       gap: 8px;
     }
-    
+
     .project-price i {
       color: #fbbf24;
-      font-size: 20px;
     }
 
-    /* Контакты */
+    /* Contact */
     .contact-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 40px;
     }
-    
-    .contact-info {
+
+    .contact-info, .form-card {
       background: var(--bg-secondary);
       padding: 40px;
       border-radius: 32px;
       box-shadow: var(--card-shadow);
       border: 1px solid var(--border-light);
     }
-    
+
     .contact-details p {
       margin: 16px 0;
       display: flex;
       align-items: center;
       gap: 12px;
       color: var(--text-secondary);
+      word-break: break-word;
     }
-    
+
     .contact-details i {
       width: 28px;
       color: #2563eb;
       font-size: 20px;
+      flex-shrink: 0;
     }
-    
-    /* ЧИСТЫЕ СОЦКНОПКИ */
+
     .social-links {
       display: flex;
       gap: 15px;
       margin: 30px 0 20px;
       flex-wrap: wrap;
     }
-    
+
     .social-links a {
       display: inline-flex;
       align-items: center;
@@ -564,34 +685,20 @@
       color: #2563eb;
       border-radius: 50%;
       font-size: 20px;
-      transition: 0.2s;
+      transition: all 0.2s;
       text-decoration: none;
-      border: none;
-      outline: none;
     }
-    
-    .social-links a i {
-      font-size: 20px;
-      line-height: 1;
-    }
-    
+
     .social-links a:hover {
       background: #2563eb;
       color: white;
+      transform: translateY(-3px);
     }
-    
-    .form-card {
-      background: var(--bg-secondary);
-      padding: 40px;
-      border-radius: 32px;
-      box-shadow: var(--card-shadow);
-      border: 1px solid var(--border-light);
-    }
-    
+
     .form-group {
       margin-bottom: 20px;
     }
-    
+
     .form-group input,
     .form-group textarea {
       width: 100%;
@@ -603,7 +710,7 @@
       background: var(--bg-primary);
       color: var(--text-primary);
     }
-    
+
     .form-group input:focus,
     .form-group textarea:focus {
       outline: none;
@@ -611,7 +718,6 @@
       box-shadow: 0 0 0 4px rgba(37,99,235,0.15);
     }
 
-    /* КНОПКА ОТПРАВКИ */
     .submit-btn {
       background: #2563eb;
       color: white;
@@ -624,13 +730,13 @@
       width: 100%;
       transition: all 0.3s ease;
     }
-    
+
     .submit-btn:hover {
       background: #1d4ed8;
       transform: translateY(-2px);
       box-shadow: 0 10px 25px -5px rgba(37,99,235,0.4);
     }
-    
+
     .submit-btn:active {
       transform: translateY(0);
     }
@@ -642,7 +748,7 @@
       margin-bottom: 16px;
       border: 1px solid var(--border-light);
     }
-    
+
     .faq-question {
       padding: 22px 28px;
       font-weight: 600;
@@ -653,7 +759,7 @@
       align-items: center;
       color: var(--text-primary);
     }
-    
+
     .faq-answer {
       padding: 0 28px 22px;
       color: var(--text-secondary);
@@ -661,35 +767,34 @@
       overflow: hidden;
       transition: max-height 0.3s ease;
     }
-    
+
     .faq-item.active .faq-answer {
       max-height: 300px;
     }
 
-    /* КРАСИВЫЙ ПОДВАЛ как в лучших версиях */
+    /* Footer */
     footer {
       background: var(--footer-bg);
       color: var(--footer-text);
       padding: 60px 0 30px;
       border-top: 1px solid rgba(255,255,255,0.05);
     }
-    
+
     .footer-grid {
       display: grid;
       grid-template-columns: 2fr 1fr 1fr 1.5fr;
       gap: 40px;
       margin-bottom: 40px;
     }
-    
+
     .footer-col h3 {
       color: var(--footer-heading);
       font-size: 18px;
       font-weight: 600;
       margin-bottom: 25px;
       position: relative;
-      letter-spacing: 0.5px;
     }
-    
+
     .footer-col h3:after {
       content: '';
       position: absolute;
@@ -700,65 +805,56 @@
       background: #2563eb;
       border-radius: 2px;
     }
-    
-    .footer-col p {
-      color: var(--footer-text);
-      line-height: 1.7;
-      margin-bottom: 20px;
-      font-size: 15px;
-    }
-    
-    .footer-col ul {
-      list-style: none;
-    }
-    
-    .footer-col ul li {
-      margin-bottom: 14px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 15px;
-      color: var(--footer-text);
-    }
-    
-    .footer-col ul li i {
-      color: #2563eb;
-      width: 20px;
-      font-size: 16px;
-    }
-    
-    .footer-col ul li a {
-      color: var(--footer-text);
-      text-decoration: none;
-      transition: color 0.2s ease;
-    }
-    
-    .footer-col ul li a:hover {
-      color: #2563eb;
-      transform: translateX(3px);
-    }
-    
+
     .footer-logo {
       font-size: 28px;
       font-weight: 800;
       color: white;
       margin-bottom: 15px;
-      letter-spacing: -0.5px;
     }
-    
+
     .footer-logo span {
       color: #2563eb;
     }
-    
+
+    .footer-col p {
+      line-height: 1.7;
+      margin-bottom: 20px;
+    }
+
+    .footer-col ul {
+      list-style: none;
+    }
+
+    .footer-col ul li {
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .footer-col ul li i {
+      color: #2563eb;
+      width: 20px;
+    }
+
+    .footer-col ul li a {
+      color: var(--footer-text);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-col ul li a:hover {
+      color: #2563eb;
+    }
+
     .footer-bottom {
       text-align: center;
       padding-top: 30px;
       border-top: 1px solid rgba(255,255,255,0.05);
-      font-size: 14px;
-      color: var(--footer-text);
     }
 
-    /* ЧИСТАЯ WHATSAPP КНОПКА */
+    /* WhatsApp */
     .whatsapp-float {
       position: fixed;
       bottom: 30px;
@@ -774,73 +870,100 @@
       font-size: 32px;
       box-shadow: 0 8px 22px rgba(0,0,0,0.15);
       z-index: 100;
-      transition: transform 0.2s;
+      transition: all 0.2s;
       text-decoration: none;
-      border: none;
-      outline: none;
-    }
-    
-    .whatsapp-float i {
-      font-size: 36px;
-      line-height: 1;
-    }
-    
-    .whatsapp-float:hover {
-      transform: scale(1.1);
     }
 
-    /* Мобильная адаптация */
+    .whatsapp-float:hover {
+      transform: scale(1.1);
+      background: #20b859;
+    }
+
+    /* ===== MOBILE ADAPTATIONS ===== */
     @media (max-width: 700px) {
-      .header-flex {
-        justify-content: center;
-      }
-      .header-controls {
-        margin-top: 8px;
-      }
       .hero {
-        padding: 100px 0 100px;
+        padding: 60px 0 60px;
       }
+
       .hero h1 {
-        font-size: 32px;
+        font-size: 28px;
       }
+
+      .hero p {
+        font-size: 16px;
+      }
+
       .hero-grid {
         grid-template-columns: 1fr;
         text-align: center;
+        gap: 30px;
       }
+
       .hero-stats, .btn-group {
         justify-content: center;
       }
-      .hero-image img {
-      object-position: 50% 70%;
-        max-height: 400px;
+
+      .stat-number {
+        font-size: 24px;
       }
-      .about-grid {
+
+      .about-grid, .contact-grid {
         grid-template-columns: 1fr;
+        gap: 30px;
       }
-      .contact-grid {
-        grid-template-columns: 1fr;
+
+      .about-card, .contact-info, .form-card {
+        padding: 30px 20px;
       }
+
+      .section {
+        padding: 50px 0;
+      }
+
+      .section-title {
+        font-size: 28px;
+        margin-bottom: 30px;
+      }
+
       .footer-grid {
         grid-template-columns: 1fr;
         gap: 30px;
         text-align: center;
       }
+
       .footer-col h3:after {
         left: 50%;
         transform: translateX(-50%);
       }
+
       .footer-col ul li {
         justify-content: center;
       }
-      .portfolio-grid {
-        grid-template-columns: 1fr;
-      }
+
       .whatsapp-float {
-        width: 56px;
-        height: 56px;
+        width: 50px;
+        height: 50px;
+        font-size: 24px;
+        bottom: 15px;
+        right: 15px;
       }
-      .whatsapp-float i {
-        font-size: 32px;
+    }
+
+    @media (max-width: 480px) {
+      .btn {
+        width: 100%;
+        text-align: center;
+      }
+
+      .btn-group {
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .hero-stats {
+        flex-direction: column;
+        gap: 15px;
+        align-items: center;
       }
     }
   </style>
@@ -851,7 +974,9 @@
       <div class="logo">
         <a href="/"><span>PLOTVI</span></a>
       </div>
-      <nav>
+      
+      <!-- Desktop Navigation -->
+      <nav class="desktop-nav">
         <ul>
           <li><a href="#home" id="navHome">Home</a></li>
           <li><a href="#about" id="navAbout">About</a></li>
@@ -860,6 +985,7 @@
           <li><a href="#contact" id="navContact">Contact</a></li>
         </ul>
       </nav>
+      
       <div class="header-controls">
         <div class="language-selector">
           <button class="lang-btn active" data-lang="en" id="langEn">
@@ -874,13 +1000,27 @@
         <div class="theme-toggle" id="themeToggle">
           <i class="fas fa-moon"></i>
         </div>
+        <div class="mobile-menu-toggle" id="mobileMenuToggle">
+          <i class="fas fa-bars"></i>
+        </div>
       </div>
+    </div>
+    
+    <!-- Mobile Navigation -->
+    <div class="mobile-nav" id="mobileNav">
+      <ul>
+        <li><a href="#home" id="mobileNavHome">Home</a></li>
+        <li><a href="#about" id="mobileNavAbout">About</a></li>
+        <li><a href="#services" id="mobileNavServices">Services</a></li>
+        <li><a href="#portfolio" id="mobileNavProjects">Projects</a></li>
+        <li><a href="#contact" id="mobileNavContact">Contact</a></li>
+      </ul>
     </div>
   </header>
 
   <section class="hero" id="home">
     <div class="container hero-grid">
-      <div class="fade-up visible">
+      <div class="fade-up">
         <h1 id="heroTitle">Real estate in the Dominican Republic</h1>
         <p id="heroSub">Turnkey villas · Legal support · Investments · Sosúa, Cabarete, Punta Cana</p>
         <div class="btn-group">
@@ -892,7 +1032,7 @@
           <div class="stat-item"><div class="stat-number">10+</div><div class="stat-label" id="statVillas">villas built</div></div>
         </div>
       </div>
-      <div class="hero-image scale-in visible">
+      <div class="hero-image scale-in">
         <img src="https://i.postimg.cc/nV0Jb8QB/A7507F68-EA02-4536-9152-58CB12DC3F16.png" alt="Luxury villa" loading="lazy">
       </div>
     </div>
@@ -901,43 +1041,23 @@
   <section class="section" id="about">
     <div class="container">
       <h2 class="section-title fade-up" id="aboutTitle">About Vladis P.Plot</h2>
-      
       <div class="about-grid">
         <div class="about-card fade-up delay-1">
-          <div class="about-badge">
-            <i class="fas fa-flag-checkered"></i> <span id="aboutBadge">Since 2007</span>
-          </div>
+          <div class="about-badge"><i class="fas fa-flag-checkered"></i> <span id="aboutBadge">Since 2007</span></div>
           <h3 id="aboutHeading">Trusted partner in luxury real estate</h3>
           <p id="aboutText1">Founded in 2007, we have become a trusted partner in luxury construction and real estate management across the Dominican Republic's north coast. Our team provides full‑cycle development.</p>
-          
           <div class="about-stats">
-            <div class="about-stat-item">
-              <div class="about-stat-number">17+</div>
-              <div class="about-stat-label" id="aboutStat1">years of excellence</div>
-            </div>
-            <div class="about-stat-item">
-              <div class="about-stat-number">120+</div>
-              <div class="about-stat-label" id="aboutStat2">projects completed</div>
-            </div>
+            <div class="about-stat-item"><div class="about-stat-number">17+</div><div class="about-stat-label" id="aboutStat1">years of excellence</div></div>
+            <div class="about-stat-item"><div class="about-stat-number">120+</div><div class="about-stat-label" id="aboutStat2">projects completed</div></div>
           </div>
         </div>
-
         <div class="about-card fade-up delay-2">
-          <div class="about-icon">
-            <i class="fas fa-scale-balanced"></i>
-          </div>
+          <div class="about-icon"><i class="fas fa-scale-balanced"></i></div>
           <h3 id="aboutLegalTitle">Legal & investment support</h3>
           <p id="aboutText2">We offer legal and immigration support for foreign investors — property registration, contracts, due diligence, and residency assistance. Your investment is secure with us.</p>
-          
           <div class="about-stats">
-            <div class="about-stat-item">
-              <div class="about-stat-number">100%</div>
-              <div class="about-stat-label" id="aboutStat3">legal compliance</div>
-            </div>
-            <div class="about-stat-item">
-              <div class="about-stat-number">50+</div>
-              <div class="about-stat-label" id="aboutStat4">happy investors</div>
-            </div>
+            <div class="about-stat-item"><div class="about-stat-number">100%</div><div class="about-stat-label" id="aboutStat3">legal compliance</div></div>
+            <div class="about-stat-item"><div class="about-stat-number">50+</div><div class="about-stat-label" id="aboutStat4">happy investors</div></div>
           </div>
         </div>
       </div>
@@ -1022,6 +1142,7 @@
           <form action="https://formsubmit.co/inforepdom@gmail.com" method="POST" id="quickForm">
             <input type="hidden" name="_subject" value="New inquiry from PLOTVI">
             <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="_template" value="box">
             <input type="hidden" name="_language" value="english">
             <div class="form-group"><input type="text" name="name" placeholder="Your name" id="formName" required></div>
             <div class="form-group"><input type="email" name="email" placeholder="Email address" id="formEmail" required></div>
@@ -1034,7 +1155,6 @@
     </div>
   </section>
 
-  <!-- КРАСИВЫЙ ПОДВАЛ -->
   <footer>
     <div class="container">
       <div class="footer-grid">
@@ -1082,6 +1202,7 @@
     const translations = {
       en: {
         navHome: 'Home', navAbout: 'About', navServices: 'Services', navProjects: 'Projects', navContact: 'Contact',
+        mobileNavHome: 'Home', mobileNavAbout: 'About', mobileNavServices: 'Services', mobileNavProjects: 'Projects', mobileNavContact: 'Contact',
         heroTitle: 'Real estate in the Dominican Republic',
         heroSub: 'Turnkey villas · Legal support · Investments · Sosúa, Cabarete, Punta Cana',
         ctaContact: 'Contact us', ctaProjects: 'Our projects',
@@ -1125,6 +1246,7 @@
       },
       es: {
         navHome: 'Inicio', navAbout: 'Nosotros', navServices: 'Servicios', navProjects: 'Proyectos', navContact: 'Contacto',
+        mobileNavHome: 'Inicio', mobileNavAbout: 'Nosotros', mobileNavServices: 'Servicios', mobileNavProjects: 'Proyectos', mobileNavContact: 'Contacto',
         heroTitle: 'Bienes raíces en República Dominicana',
         heroSub: 'Villas llave en mano · Asesoría legal · Inversiones · Sosúa, Cabarete, Punta Cana',
         ctaContact: 'Contáctenos', ctaProjects: 'Nuestros proyectos',
@@ -1174,12 +1296,19 @@
       currentLang = lang;
       const t = translations[lang];
       
-      // Navigation
+      // Desktop Navigation
       document.getElementById('navHome').innerText = t.navHome;
       document.getElementById('navAbout').innerText = t.navAbout;
       document.getElementById('navServices').innerText = t.navServices;
       document.getElementById('navProjects').innerText = t.navProjects;
       document.getElementById('navContact').innerText = t.navContact;
+      
+      // Mobile Navigation
+      document.getElementById('mobileNavHome').innerText = t.mobileNavHome;
+      document.getElementById('mobileNavAbout').innerText = t.mobileNavAbout;
+      document.getElementById('mobileNavServices').innerText = t.mobileNavServices;
+      document.getElementById('mobileNavProjects').innerText = t.mobileNavProjects;
+      document.getElementById('mobileNavContact').innerText = t.mobileNavContact;
       
       // Hero
       document.getElementById('heroTitle').innerHTML = t.heroTitle;
@@ -1279,12 +1408,11 @@
       document.getElementById('footerLocation').innerText = t.footerLocation;
       document.getElementById('footerRights').innerText = t.footerRights;
 
-      // Активная кнопка языка
       document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
       document.getElementById(`lang${lang.charAt(0).toUpperCase() + lang.slice(1)}`).classList.add('active');
     }
 
-    // Тема
+    // Theme
     function initTheme() {
       const saved = localStorage.getItem('theme') || 'light';
       if (saved === 'dark') {
@@ -1300,21 +1428,20 @@
       document.querySelector('#themeToggle i').className = isDark ? 'fas fa-sun' : 'fas fa-moon';
     }
 
-    // Header при скролле
     function handleHeaderScroll() {
       const header = document.getElementById('mainHeader');
       header.classList.toggle('scrolled', window.scrollY > 50);
     }
 
-    // Анимации
     function handleScrollAnimations() {
       document.querySelectorAll('.fade-up, .scale-in').forEach(el => {
         const rect = el.getBoundingClientRect();
-        if (rect.top < window.innerHeight * 0.85) el.classList.add('visible');
+        if (rect.top < window.innerHeight * 0.85) {
+          el.classList.add('visible');
+        }
       });
     }
 
-    // FAQ
     function initFaq() {
       document.querySelectorAll('.faq-question').forEach(q => {
         q.addEventListener('click', function() {
@@ -1326,7 +1453,28 @@
       });
     }
 
-    // Инициализация
+    // Mobile menu toggle
+    const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+    const mobileNav = document.getElementById('mobileNav');
+    const mobileMenuIcon = mobileMenuToggle.querySelector('i');
+
+    mobileMenuToggle.addEventListener('click', () => {
+      mobileNav.classList.toggle('active');
+      if (mobileNav.classList.contains('active')) {
+        mobileMenuIcon.className = 'fas fa-times';
+      } else {
+        mobileMenuIcon.className = 'fas fa-bars';
+      }
+    });
+
+    // Close mobile menu when clicking a link
+    document.querySelectorAll('.mobile-nav a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileNav.classList.remove('active');
+        mobileMenuIcon.className = 'fas fa-bars';
+      });
+    });
+
     window.addEventListener('load', () => {
       initTheme();
       initFaq();
