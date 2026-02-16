@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
   <title>PLOTVI — Real Estate in Dominican Republic</title>
   <meta name="description" content="Vladis P.Plot — premium construction & real estate in Sosúa, Cabarete, Punta Cana. Turnkey villas, legal support, investments.">
   
@@ -25,7 +25,7 @@
     .container {
       max-width: 1200px;
       margin: 0 auto;
-      padding: 0 24px;
+      padding: 0 20px;
     }
     header {
       background: #ffffff;
@@ -33,26 +33,29 @@
       position: sticky;
       top: 0;
       z-index: 50;
-      padding: 12px 0;
+      padding: 8px 0;
     }
     .header-flex {
       display: flex;
       align-items: center;
       justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 8px;
     }
     .logo a {
-      font-size: 28px;
+      font-size: 26px;
       font-weight: 800;
       color: #0f172a;
       text-decoration: none;
       letter-spacing: -0.5px;
+      white-space: nowrap;
     }
     .logo span {
       color: #2563eb;
     }
     nav ul {
       display: flex;
-      gap: 32px;
+      gap: 20px;
       list-style: none;
     }
     nav a {
@@ -60,62 +63,153 @@
       color: #1e293b;
       font-weight: 500;
       transition: color 0.2s;
-      font-size: 16px;
+      font-size: 15px;
     }
     nav a:hover {
       color: #2563eb;
     }
-    /* ПОНЯТНЫЙ ПЕРЕКЛЮЧАТЕЛЬ ЯЗЫКОВ — ОБА ФЛАГА ЭМОДЗИ */
+    /* переключатель языков компактный */
     .language-selector {
       display: flex;
-      gap: 6px;
+      gap: 4px;
       background: #f1f5f9;
-      padding: 4px;
-      border-radius: 48px;
+      padding: 3px;
+      border-radius: 40px;
       border: 1px solid #e2e8f0;
     }
     .lang-btn {
       background: transparent;
       border: none;
-      padding: 6px 14px;
-      border-radius: 40px;
-      font-size: 15px;
+      padding: 5px 10px;
+      border-radius: 36px;
+      font-size: 14px;
       font-weight: 600;
       cursor: pointer;
       transition: all 0.2s ease;
       color: #64748b;
       display: flex;
       align-items: center;
-      gap: 6px;
+      gap: 4px;
     }
     .lang-btn .emoji-flag {
-      font-size: 1.3rem;
+      font-size: 1.2rem;
       line-height: 1;
     }
     .lang-btn.active {
       background: #2563eb;
       color: white;
-      box-shadow: 0 4px 10px rgba(37,99,235,0.3);
+      box-shadow: 0 4px 8px rgba(37,99,235,0.3);
     }
-    .lang-btn:hover:not(.active) {
-      background: #e2e8f0;
-      color: #1e293b;
-    }
-    /* На мобильных — только флаги + текст */
-    @media (max-width: 800px) {
-      .lang-btn {
-        padding: 6px 10px;
-        font-size: 13px;
+
+    /* ГЛАВНОЕ: ИСПРАВЛЕНИЕ МОБИЛЬНОЙ ВЁРСТКИ */
+    @media (max-width: 700px) {
+      .header-flex {
+        justify-content: center;
       }
-      .lang-btn .emoji-flag {
-        font-size: 1.2rem;
+      nav ul {
+        gap: 16px;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin: 6px 0 4px;
+      }
+      .language-selector {
+        margin-top: 4px;
+      }
+      .hero h1 {
+        font-size: 32px !important;
+        line-height: 1.2;
+      }
+      .hero p {
+        font-size: 16px;
+      }
+      .hero-grid {
+        grid-template-columns: 1fr !important;
+        gap: 30px;
+        text-align: center;
+      }
+      .hero-stats {
+        justify-content: center;
+      }
+      .btn-group {
+        justify-content: center;
+      }
+      .section {
+        padding: 50px 0;
+      }
+      .section-title {
+        font-size: 28px;
+        margin-bottom: 30px;
+      }
+      .services-grid, .portfolio-grid {
+        grid-template-columns: 1fr !important;
+        gap: 20px;
+      }
+      .contact-grid {
+        grid-template-columns: 1fr !important;
+        gap: 24px;
+      }
+      .contact-info, .form-card {
+        padding: 28px 20px;
+      }
+      .footer-grid {
+        grid-template-columns: 1fr !important;
+        gap: 30px;
+        text-align: center;
+      }
+      .footer-col ul {
+        padding: 0;
+      }
+      .footer-col li {
+        justify-content: center;
+      }
+      .stat-number {
+        font-size: 28px;
+      }
+      .text-card {
+        padding: 24px 20px;
+      }
+      .project-icon {
+        width: 50px;
+        height: 50px;
+        font-size: 26px;
+      }
+      .text-card h4 {
+        font-size: 22px;
+      }
+      .faq-question {
+        padding: 18px 20px;
+        font-size: 16px;
+      }
+      .faq-answer {
+        padding: 0 20px 18px;
+      }
+      .whatsapp-float {
+        width: 56px;
+        height: 56px;
+        font-size: 28px;
+        bottom: 20px;
+        right: 20px;
       }
     }
-    /* Остальные стили без изменений */
+
+    /* планшеты */
+    @media (min-width: 701px) and (max-width: 900px) {
+      .hero h1 {
+        font-size: 40px;
+      }
+      .services-grid, .portfolio-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    /* остальные стили (без изменений, кроме адаптивных) */
     .hero {
       background: linear-gradient(135deg, #0b1a33, #102a43);
       color: white;
-      padding: 100px 0 120px;
+      padding: 70px 0 100px;
       position: relative;
     }
     .hero::after {
@@ -124,13 +218,13 @@
       bottom: 0;
       left: 0;
       width: 100%;
-      height: 80px;
+      height: 60px;
       background: linear-gradient(to top, #f8fafc, transparent);
     }
     .hero-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 50px;
+      gap: 40px;
       align-items: center;
     }
     .hero h1 {
@@ -143,7 +237,6 @@
       font-size: 18px;
       opacity: 0.9;
       margin-bottom: 30px;
-      max-width: 500px;
     }
     .btn-group {
       display: flex;
@@ -152,7 +245,7 @@
     }
     .btn {
       display: inline-block;
-      padding: 14px 36px;
+      padding: 12px 30px;
       border-radius: 40px;
       font-weight: 600;
       text-decoration: none;
@@ -346,20 +439,23 @@
       margin-bottom: 20px;
     }
     .contact-details p {
-      margin: 18px 0;
+      margin: 16px 0;
       display: flex;
       align-items: center;
       gap: 12px;
+      word-break: break-word;
     }
     .contact-details i {
       width: 28px;
       color: #2563eb;
       font-size: 20px;
+      flex-shrink: 0;
     }
     .social-links {
       display: flex;
       gap: 15px;
       margin: 30px 0 20px;
+      flex-wrap: wrap;
     }
     .social-links a {
       display: inline-flex;
@@ -385,12 +481,12 @@
       box-shadow: 0 20px 35px -8px rgba(0,0,0,0.05);
     }
     .form-group {
-      margin-bottom: 24px;
+      margin-bottom: 20px;
     }
     .form-group input,
     .form-group textarea {
       width: 100%;
-      padding: 16px 20px;
+      padding: 15px 20px;
       border: 1px solid #e2e8f0;
       border-radius: 40px;
       font-size: 16px;
@@ -416,10 +512,10 @@
       font-size: 16px;
       cursor: pointer;
       transition: 0.2s;
+      width: 100%;
     }
     .submit-btn:hover {
       background: #1d4ed8;
-      transform: scale(1.02);
     }
     .faq-item {
       background: white;
@@ -459,13 +555,16 @@
     .footer-col h3 {
       color: white;
       font-size: 18px;
-      margin-bottom: 24px;
+      margin-bottom: 20px;
     }
     .footer-col ul {
       list-style: none;
     }
     .footer-col li {
-      margin-bottom: 12px;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
     }
     .footer-col a {
       color: #cbd5e1;
@@ -502,13 +601,14 @@
     .whatsapp-float:hover {
       transform: scale(1.1);
     }
-    @media (max-width: 800px) {
-      .hero-grid, .contact-grid, .footer-grid {
-        grid-template-columns: 1fr;
-      }
-      nav ul {
-        display: none;
-      }
+    /* убираем скролл по горизонтали */
+    html, body {
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+    img {
+      max-width: 100%;
+      height: auto;
     }
   </style>
 </head>
@@ -516,7 +616,6 @@
   <header>
     <div class="container header-flex">
       <div class="logo">
-        <!-- ЛОГОТИП ИЗМЕНЁН НА PLOTVI (заглавными) -->
         <a href="/"><span>PLOTVI</span></a>
       </div>
       <nav>
@@ -528,7 +627,6 @@
           <li><a href="#contact" id="navContact">Contact</a></li>
         </ul>
       </nav>
-      <!-- ПОНЯТНЫЙ ПЕРЕКЛЮЧАТЕЛЬ С ЭМОДЗИ-ФЛАГАМИ (🇺🇸 и 🇪🇸) -->
       <div class="language-selector">
         <button class="lang-btn active" data-lang="en" id="langEn">
           <span class="emoji-flag">🇺🇸</span>
@@ -545,7 +643,6 @@
   <section class="hero" id="home">
     <div class="container hero-grid">
       <div>
-        <!-- ЗАГОЛОВОК ИЗМЕНЁН: EN + ES по запросу -->
         <h1 id="heroTitle">Real estate in the Dominican Republic</h1>
         <p id="heroSub">Turnkey villas · Legal support · Investments · Sosúa, Cabarete, Punta Cana</p>
         <div class="btn-group">
@@ -558,7 +655,7 @@
         </div>
       </div>
       <div class="hero-image">
-        <img src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=800&q=80" alt="Luxury villa Dominican Republic">
+        <img src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=800&q=80" alt="Luxury villa Dominican Republic" loading="lazy">
       </div>
     </div>
   </section>
@@ -566,13 +663,13 @@
   <section class="section" id="about">
     <div class="container">
       <h2 class="section-title" id="aboutTitle">About Vladis P.Plot</h2>
-      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center;">
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; align-items: center;">
         <div>
           <p style="font-size: 18px; margin-bottom: 20px;" id="aboutText1">Founded in 2007, we have become a trusted partner in luxury construction and real estate management across the Dominican Republic's north coast.</p>
           <p style="color: #475569;" id="aboutText2">Our team provides full‑cycle development: from architectural design and permits to handover and after‑sales service. We also offer legal and immigration support for foreign investors.</p>
         </div>
         <div>
-          <img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=800&q=80" alt="construction team" style="width:100%; border-radius: 32px;">
+          <img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=800&q=80" alt="construction team" style="width:100%; border-radius: 32px;" loading="lazy">
         </div>
       </div>
     </div>
@@ -592,59 +689,16 @@
     </div>
   </section>
 
-  <!-- ПОРТФОЛИО: 6 стильных текстовых карточек -->
   <section class="section" id="portfolio">
     <div class="container">
       <h2 class="section-title" id="portfolioTitle">Selected projects</h2>
       <div class="portfolio-grid">
-        
-        <div class="text-card">
-          <div class="project-icon"><i class="fas fa-umbrella-beach"></i></div>
-          <h4 id="project1Name">Perla Marina</h4>
-          <div class="project-location"><i class="fas fa-map-pin"></i> <span id="proj1Loc">Sosúa, Costa Norte</span></div>
-          <p class="project-desc" id="proj1Desc">Elegant 115 m² villa with tropical garden, 3 bedrooms, private terrace. Resort-style community.</p>
-          <div class="project-price"><i class="fas fa-tag"></i> <span id="proj1Price">$395,000</span></div>
-        </div>
-
-        <div class="text-card">
-          <div class="project-icon"><i class="fas fa-crown"></i></div>
-          <h4 id="project2Name">Sea Horse Ranch</h4>
-          <div class="project-location"><i class="fas fa-map-pin"></i> <span id="proj2Loc">Cabarete, gated community</span></div>
-          <p class="project-desc" id="proj2Desc">Exclusive 500 m² villa with ocean views, private pool, 5 suites, staff quarters. Ultra-premium.</p>
-          <div class="project-price"><i class="fas fa-tag"></i> <span id="proj2Price">$1,450,000</span></div>
-        </div>
-
-        <div class="text-card">
-          <div class="project-icon"><i class="fas fa-water"></i></div>
-          <h4 id="project3Name">Sosúa Ocean Village</h4>
-          <div class="project-location"><i class="fas fa-map-pin"></i> <span id="proj3Loc">Sosúa, cliffside</span></div>
-          <p class="project-desc" id="proj3Desc">Panoramic 300 m² villa, floor-to-ceiling windows, infinity pool, direct ocean access.</p>
-          <div class="project-price"><i class="fas fa-tag"></i> <span id="proj3Price">$895,000</span></div>
-        </div>
-
-        <div class="text-card">
-          <div class="project-icon"><i class="fas fa-mountain"></i></div>
-          <h4 id="project4Name">Cabarete Hills</h4>
-          <div class="project-location"><i class="fas fa-map-pin"></i> <span id="proj4Loc">Cabarete, hillside</span></div>
-          <p class="project-desc" id="proj4Desc">Modern 280 m² design villa, open concept, rooftop terrace, 360° mountain & ocean view.</p>
-          <div class="project-price"><i class="fas fa-tag"></i> <span id="proj4Price">$675,000</span></div>
-        </div>
-
-        <div class="text-card">
-          <div class="project-icon"><i class="fas fa-sun"></i></div>
-          <h4 id="project5Name">Panorama Village</h4>
-          <div class="project-location"><i class="fas fa-map-pin"></i> <span id="proj5Loc">Sosúa, Bay view</span></div>
-          <p class="project-desc" id="proj5Desc">Spacious 450 m² luxury villa, 6 bedrooms, cinema room, gym, overlooking Sosúa Bay.</p>
-          <div class="project-price"><i class="fas fa-tag"></i> <span id="proj5Price">$1,190,000</span></div>
-        </div>
-
-        <div class="text-card">
-          <div class="project-icon"><i class="fas fa-tree"></i></div>
-          <h4 id="project6Name">Campo del Mar</h4>
-          <div class="project-location"><i class="fas fa-map-pin"></i> <span id="proj6Loc">Sosúa, beachfront</span></div>
-          <p class="project-desc" id="proj6Desc">Cozy 120 m² villa, 2 bedrooms, 2 baths, tropical patio, 3 min walk to the beach.</p>
-          <div class="project-price"><i class="fas fa-tag"></i> <span id="proj6Price">$345,000</span></div>
-        </div>
+        <div class="text-card"><div class="project-icon"><i class="fas fa-umbrella-beach"></i></div><h4 id="project1Name">Perla Marina</h4><div class="project-location"><i class="fas fa-map-pin"></i> <span id="proj1Loc">Sosúa, Costa Norte</span></div><p class="project-desc" id="proj1Desc">Elegant 115 m² villa with tropical garden, 3 bedrooms, private terrace. Resort-style community.</p><div class="project-price"><i class="fas fa-tag"></i> <span id="proj1Price">$395,000</span></div></div>
+        <div class="text-card"><div class="project-icon"><i class="fas fa-crown"></i></div><h4 id="project2Name">Sea Horse Ranch</h4><div class="project-location"><i class="fas fa-map-pin"></i> <span id="proj2Loc">Cabarete, gated community</span></div><p class="project-desc" id="proj2Desc">Exclusive 500 m² villa with ocean views, private pool, 5 suites, staff quarters. Ultra-premium.</p><div class="project-price"><i class="fas fa-tag"></i> <span id="proj2Price">$1,450,000</span></div></div>
+        <div class="text-card"><div class="project-icon"><i class="fas fa-water"></i></div><h4 id="project3Name">Sosúa Ocean Village</h4><div class="project-location"><i class="fas fa-map-pin"></i> <span id="proj3Loc">Sosúa, cliffside</span></div><p class="project-desc" id="proj3Desc">Panoramic 300 m² villa, floor-to-ceiling windows, infinity pool, direct ocean access.</p><div class="project-price"><i class="fas fa-tag"></i> <span id="proj3Price">$895,000</span></div></div>
+        <div class="text-card"><div class="project-icon"><i class="fas fa-mountain"></i></div><h4 id="project4Name">Cabarete Hills</h4><div class="project-location"><i class="fas fa-map-pin"></i> <span id="proj4Loc">Cabarete, hillside</span></div><p class="project-desc" id="proj4Desc">Modern 280 m² design villa, open concept, rooftop terrace, 360° mountain & ocean view.</p><div class="project-price"><i class="fas fa-tag"></i> <span id="proj4Price">$675,000</span></div></div>
+        <div class="text-card"><div class="project-icon"><i class="fas fa-sun"></i></div><h4 id="project5Name">Panorama Village</h4><div class="project-location"><i class="fas fa-map-pin"></i> <span id="proj5Loc">Sosúa, Bay view</span></div><p class="project-desc" id="proj5Desc">Spacious 450 m² luxury villa, 6 bedrooms, cinema room, gym, overlooking Sosúa Bay.</p><div class="project-price"><i class="fas fa-tag"></i> <span id="proj5Price">$1,190,000</span></div></div>
+        <div class="text-card"><div class="project-icon"><i class="fas fa-tree"></i></div><h4 id="project6Name">Campo del Mar</h4><div class="project-location"><i class="fas fa-map-pin"></i> <span id="proj6Loc">Sosúa, beachfront</span></div><p class="project-desc" id="proj6Desc">Cozy 120 m² villa, 2 bedrooms, 2 baths, tropical patio, 3 min walk to the beach.</p><div class="project-price"><i class="fas fa-tag"></i> <span id="proj6Price">$345,000</span></div></div>
       </div>
     </div>
   </section>
@@ -652,18 +706,9 @@
   <section class="section" id="faq">
     <div class="container">
       <h2 class="section-title" id="faqTitle">FAQ</h2>
-      <div class="faq-item">
-        <div class="faq-question" id="faq1q">Construction time for a villa? <i class="fas fa-chevron-down"></i></div>
-        <div class="faq-answer" id="faq1a">Average 8‑12 months for 300‑400 m², depending on complexity.</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-question" id="faq2q">Do you help with residency? <i class="fas fa-chevron-down"></i></div>
-        <div class="faq-answer" id="faq2a">Yes, we provide full immigration assistance for investors and their families.</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-question" id="faq3q">What guarantee do you offer? <i class="fas fa-chevron-down"></i></div>
-        <div class="faq-answer" id="faq3a">5 years on structures, 2 years on systems – all written in contract.</div>
-      </div>
+      <div class="faq-item"><div class="faq-question" id="faq1q">Construction time for a villa? <i class="fas fa-chevron-down"></i></div><div class="faq-answer" id="faq1a">Average 8‑12 months for 300‑400 m², depending on complexity.</div></div>
+      <div class="faq-item"><div class="faq-question" id="faq2q">Do you help with residency? <i class="fas fa-chevron-down"></i></div><div class="faq-answer" id="faq2a">Yes, we provide full immigration assistance for investors and their families.</div></div>
+      <div class="faq-item"><div class="faq-question" id="faq3q">What guarantee do you offer? <i class="fas fa-chevron-down"></i></div><div class="faq-answer" id="faq3a">5 years on structures, 2 years on systems – all written in contract.</div></div>
     </div>
   </section>
 
@@ -687,14 +732,11 @@
           </div>
         </div>
         <div class="form-card">
-          <!-- ФОРМА ТЕПЕРЬ ОТПРАВЛЯЕТСЯ НА EMAIL через FormSubmit.co (РАБОТАЕТ В SAFARI) -->
           <form action="https://formsubmit.co/inforepdom@gmail.com" method="POST" id="quickForm">
-            <!-- Поля для FormSubmit (защита от спама, редирект) -->
             <input type="hidden" name="_subject" value="Новая заявка с PLOTVI">
             <input type="hidden" name="_captcha" value="false">
-            <input type="hidden" name="_next" value="https://plotvi.com/thanks.html"> <!-- при отсутствии своего можно удалить, но лучше создать простую страницу "спасибо", либо убрать и будет возврат на ту же -->
+            <input type="hidden" name="_next" value="https://plotvi.com/thanks.html">
             <input type="hidden" name="_language" value="english">
-            
             <div class="form-group"><input type="text" name="name" placeholder="Your name" id="formName" required></div>
             <div class="form-group"><input type="email" name="email" placeholder="Email address" id="formEmail" required></div>
             <div class="form-group"><input type="tel" name="phone" placeholder="WhatsApp / phone" id="formPhone" required></div>
@@ -708,35 +750,18 @@
 
   <footer>
     <div class="container footer-grid">
-      <div class="footer-col">
-        <h3>PLOTVI</h3>
-        <p id="footerDesc">Premium construction & real estate in Dominican Republic since 2007.</p>
-      </div>
-      <div class="footer-col">
-        <h3 id="footerNav">Navigation</h3>
-        <ul><li><a href="#home" id="footerHome">Home</a></li><li><a href="#about" id="footerAbout">About</a></li><li><a href="#services" id="footerServices">Services</a></li><li><a href="#portfolio" id="footerProjects">Projects</a></li></ul>
-      </div>
-      <div class="footer-col">
-        <h3 id="footerServTitle">Services</h3>
-        <ul><li id="footerServ1">Turnkey construction</li><li id="footerServ2">Architectural design</li><li id="footerServ3">Legal & immigration</li><li id="footerServ4">Management</li></ul>
-      </div>
-      <div class="footer-col">
-        <h3 id="footerContact">Contact</h3>
-        <ul><li><i class="fas fa-phone"></i> +1 (829) 994-8888</li><li><i class="fas fa-envelope"></i> admin@plotvi.com</li><li id="footerLocation">Sosúa, DR</li></ul>
-      </div>
+      <div class="footer-col"><h3>PLOTVI</h3><p id="footerDesc">Premium construction & real estate in Dominican Republic since 2007.</p></div>
+      <div class="footer-col"><h3 id="footerNav">Navigation</h3><ul><li><a href="#home" id="footerHome">Home</a></li><li><a href="#about" id="footerAbout">About</a></li><li><a href="#services" id="footerServices">Services</a></li><li><a href="#portfolio" id="footerProjects">Projects</a></li></ul></div>
+      <div class="footer-col"><h3 id="footerServTitle">Services</h3><ul><li id="footerServ1">Turnkey construction</li><li id="footerServ2">Architectural design</li><li id="footerServ3">Legal & immigration</li><li id="footerServ4">Management</li></ul></div>
+      <div class="footer-col"><h3 id="footerContact">Contact</h3><ul><li><i class="fas fa-phone"></i> +1 (829) 994-8888</li><li><i class="fas fa-envelope"></i> admin@plotvi.com</li><li id="footerLocation">Sosúa, DR</li></ul></div>
     </div>
-    <div class="copyright">
-      © 2026 PLOTVI — <span id="footerRights">All rights reserved.</span>
-    </div>
+    <div class="copyright">© 2026 PLOTVI — <span id="footerRights">All rights reserved.</span></div>
   </footer>
 
   <a href="https://wa.me/18299948888" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
 
   <script>
-    // язык по умолчанию английский
     let currentLang = 'en';
-
-    // словарь переводов (только EN и ES) — заголовки изменены согласно запросу
     const translations = {
       en: {
         navHome: 'Home', navAbout: 'About', navServices: 'Services', navProjects: 'Projects', navContact: 'Contact',
@@ -815,7 +840,6 @@
     function applyLanguage(lang) {
       currentLang = lang;
       const t = translations[lang];
-
       document.getElementById('navHome').innerText = t.navHome;
       document.getElementById('navAbout').innerText = t.navAbout;
       document.getElementById('navServices').innerText = t.navServices;
@@ -875,18 +899,13 @@
       document.getElementById('footerLocation').innerText = t.footerLocation;
       document.getElementById('footerRights').innerText = t.footerRights;
 
-      // Обновляем активную кнопку языка
-      document.querySelectorAll('.lang-btn').forEach(btn => {
-        btn.classList.remove('active');
-      });
+      document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
       document.getElementById(`lang${lang.charAt(0).toUpperCase() + lang.slice(1)}`).classList.add('active');
     }
 
-    // Обработчики для кнопок языка
     document.getElementById('langEn').addEventListener('click', () => applyLanguage('en'));
     document.getElementById('langEs').addEventListener('click', () => applyLanguage('es'));
 
-    // FAQ аккордеон
     document.querySelectorAll('.faq-question').forEach(q => {
       q.addEventListener('click', function(e) {
         const item = this.parentNode;
@@ -896,7 +915,6 @@
       });
     });
 
-    // установка английского по умолчанию
     applyLanguage('en');
   </script>
 </body>
