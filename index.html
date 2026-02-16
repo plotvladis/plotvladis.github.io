@@ -30,8 +30,6 @@
       --footer-bg: #0f172a;
       --footer-text: #cbd5e1;
       --footer-heading: #ffffff;
-      --error-color: #ef4444;
-      --error-bg: #fef2f2;
     }
 
     body.dark-theme {
@@ -45,8 +43,6 @@
       --footer-bg: #020617;
       --footer-text: #94a3b8;
       --footer-heading: #f1f5f9;
-      --error-color: #f87171;
-      --error-bg: #451a1a;
     }
 
     body {
@@ -672,10 +668,10 @@
     .form-group textarea {
       width: 100%;
       padding: 15px 20px;
-      border: 2px solid var(--border-light);
+      border: 1px solid var(--border-light);
       border-radius: 40px;
       font-size: 16px;
-      transition: all 0.2s ease;
+      transition: 0.2s;
       background: var(--bg-primary);
       color: var(--text-primary);
     }
@@ -685,19 +681,6 @@
       outline: none;
       border-color: #2563eb;
       box-shadow: 0 0 0 4px rgba(37,99,235,0.15);
-    }
-    
-    /* Стили для невалидных полей */
-    .form-group input:invalid:not(:placeholder-shown),
-    .form-group textarea:invalid:not(:placeholder-shown) {
-      border-color: var(--error-color);
-      background-color: var(--error-bg);
-    }
-    
-    .form-group input:invalid:not(:placeholder-shown):focus,
-    .form-group textarea:invalid:not(:placeholder-shown):focus {
-      border-color: var(--error-color);
-      box-shadow: 0 0 0 4px rgba(239, 68, 68, 0.15);
     }
 
     .submit-btn {
@@ -1124,28 +1107,14 @@
           </div>
         </div>
         <div class="form-card fade-up delay-2">
-          <form action="https://formsubmit.co/inforepdom@gmail.com" method="POST" id="quickForm" novalidate>
+          <form action="https://formsubmit.co/inforepdom@gmail.com" method="POST" id="quickForm">
             <input type="hidden" name="_subject" value="New inquiry from PLOTVI">
             <input type="hidden" name="_captcha" value="false">
             <input type="hidden" name="_language" value="english">
-            
-            <!-- Все поля обязательны и будут подсвечиваться красным если не заполнены -->
-            <div class="form-group">
-              <input type="text" name="name" placeholder="Your name" id="formName" required>
-            </div>
-            
-            <div class="form-group">
-              <input type="email" name="email" placeholder="Email address" id="formEmail" required>
-            </div>
-            
-            <div class="form-group">
-              <input type="tel" name="phone" placeholder="WhatsApp / phone" id="formPhone" required>
-            </div>
-            
-            <div class="form-group">
-              <textarea rows="3" name="message" placeholder="Message / project type..." id="formMsg" required></textarea>
-            </div>
-            
+            <div class="form-group"><input type="text" name="name" placeholder="Your name" id="formName" required></div>
+            <div class="form-group"><input type="email" name="email" placeholder="Email address" id="formEmail" required></div>
+            <div class="form-group"><input type="tel" name="phone" placeholder="WhatsApp / phone" id="formPhone" required></div>
+            <div class="form-group"><textarea rows="3" name="message" placeholder="Message / project type..." id="formMsg"></textarea></div>
             <button type="submit" class="submit-btn" id="formSubmit">Send request</button>
           </form>
         </div>
@@ -1430,6 +1399,11 @@
       mobileNav.classList.toggle('active');
     }
 
+    // Header при скролле (не нужен, так как шапка всегда с фоном)
+    function handleHeaderScroll() {
+      // Можно оставить пустым или удалить
+    }
+
     // Анимации
     function handleScrollAnimations() {
       document.querySelectorAll('.fade-up, .scale-in').forEach(el => {
@@ -1459,6 +1433,7 @@
     });
 
     window.addEventListener('scroll', () => {
+      handleHeaderScroll();
       handleScrollAnimations();
     });
 
