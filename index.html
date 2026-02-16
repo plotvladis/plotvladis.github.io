@@ -25,7 +25,7 @@
       --text-secondary: #475569;
       --border-light: #eef2f6;
       --card-shadow: 0 12px 30px rgba(0,0,0,0.04);
-      --header-bg: rgba(255, 255, 255, 0.9);
+      --header-bg: rgba(255, 255, 255, 0.95);
       --header-blur: blur(10px);
       --footer-bg: #0f172a;
       --footer-text: #cbd5e1;
@@ -39,7 +39,7 @@
       --text-secondary: #cbd5e1;
       --border-light: #334155;
       --card-shadow: 0 12px 30px rgba(0,0,0,0.2);
-      --header-bg: rgba(15, 23, 42, 0.9);
+      --header-bg: rgba(15, 23, 42, 0.95);
       --footer-bg: #020617;
       --footer-text: #94a3b8;
       --footer-heading: #f1f5f9;
@@ -59,33 +59,28 @@
       padding: 0 20px;
     }
     
-    /* Улучшенный header с прозрачностью */
+    /* ИДЕАЛЬНАЯ ШАПКА для мобильных */
     header {
       position: sticky;
       top: 0;
       z-index: 50;
-      padding: 8px 0;
-      transition: all 0.3s ease;
-      background: transparent;
-    }
-    
-    header.scrolled {
       background: var(--header-bg);
       backdrop-filter: var(--header-blur);
       -webkit-backdrop-filter: var(--header-blur);
-      box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+      padding: 6px 0;
     }
     
     .header-flex {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      flex-wrap: wrap;
       gap: 8px;
     }
     
+    /* Левая часть с логотипом */
     .logo a {
-      font-size: 26px;
+      font-size: 22px;
       font-weight: 800;
       color: var(--text-primary);
       text-decoration: none;
@@ -95,6 +90,11 @@
     
     .logo span {
       color: #2563eb;
+    }
+    
+    /* Центральное меню - скрыто на мобильных, показываем через кнопку */
+    nav {
+      display: block;
     }
     
     nav ul {
@@ -115,40 +115,45 @@
       color: #2563eb;
     }
     
-    /* Переключатели языков и темы */
+    /* Правая часть - компактная */
     .header-controls {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 6px;
     }
     
+    /* Уменьшенный переключатель языка */
     .language-selector {
       display: flex;
-      gap: 4px;
+      gap: 2px;
       background: var(--bg-secondary);
-      padding: 3px;
-      border-radius: 40px;
+      padding: 2px;
+      border-radius: 30px;
       border: 1px solid var(--border-light);
     }
     
     .lang-btn {
       background: transparent;
       border: none;
-      padding: 5px 10px;
-      border-radius: 36px;
-      font-size: 14px;
+      padding: 3px 8px;
+      border-radius: 30px;
+      font-size: 12px;
       font-weight: 600;
       cursor: pointer;
       transition: all 0.2s ease;
       color: var(--text-secondary);
       display: flex;
       align-items: center;
-      gap: 4px;
+      gap: 2px;
     }
     
     .lang-btn .emoji-flag {
-      font-size: 1.2rem;
+      font-size: 1rem;
       line-height: 1;
+    }
+    
+    .lang-btn span:last-child {
+      display: none; /* Скрываем текст EN/ES на мобильных */
     }
     
     .lang-btn.active {
@@ -156,12 +161,12 @@
       color: white;
     }
     
-    /* Кнопка переключения темы */
+    /* Уменьшенная кнопка темы */
     .theme-toggle {
       background: var(--bg-secondary);
       border: 1px solid var(--border-light);
-      width: 40px;
-      height: 40px;
+      width: 32px;
+      height: 32px;
       border-radius: 50%;
       display: flex;
       align-items: center;
@@ -169,7 +174,100 @@
       cursor: pointer;
       transition: all 0.3s ease;
       color: var(--text-primary);
-      font-size: 1.2rem;
+      font-size: 1rem;
+    }
+    
+    /* Кнопка меню (бургер) */
+    .mobile-menu-btn {
+      display: none;
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-light);
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      color: var(--text-primary);
+      font-size: 1rem;
+    }
+    
+    /* Для планшетов и десктопов показываем меню */
+    @media (min-width: 701px) {
+      .lang-btn span:last-child {
+        display: inline; /* Показываем текст EN/ES на десктопе */
+      }
+    }
+    
+    /* Мобильная адаптация */
+    @media (max-width: 700px) {
+      /* Прячем навигационное меню */
+      nav {
+        display: none;
+      }
+      
+      /* Показываем кнопку бургер */
+      .mobile-menu-btn {
+        display: flex;
+      }
+      
+      /* Адаптируем логотип */
+      .logo a {
+        font-size: 20px;
+      }
+      
+      /* Еще компактнее контролы */
+      .header-controls {
+        gap: 4px;
+      }
+      
+      .language-selector {
+        padding: 2px;
+      }
+      
+      .lang-btn {
+        padding: 3px 6px;
+      }
+    }
+    
+    /* Мобильное меню (выпадающее) */
+    .mobile-nav {
+      display: none;
+      position: fixed;
+      top: 60px;
+      left: 0;
+      width: 100%;
+      background: var(--header-bg);
+      backdrop-filter: var(--header-blur);
+      -webkit-backdrop-filter: var(--header-blur);
+      padding: 20px;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+      z-index: 49;
+    }
+    
+    .mobile-nav.active {
+      display: block;
+    }
+    
+    .mobile-nav ul {
+      list-style: none;
+    }
+    
+    .mobile-nav li {
+      margin-bottom: 15px;
+    }
+    
+    .mobile-nav a {
+      text-decoration: none;
+      color: var(--text-primary);
+      font-size: 18px;
+      font-weight: 500;
+      display: block;
+      padding: 5px 0;
+    }
+    
+    .mobile-nav a:hover {
+      color: #2563eb;
     }
     
     .theme-toggle:hover {
@@ -206,11 +304,11 @@
     .delay-2 { transition-delay: 0.2s; }
     .delay-3 { transition-delay: 0.3s; }
 
-    /* Hero секция - контент опущен ниже */
+    /* Hero секция */
     .hero {
       background: linear-gradient(135deg, #0b1a33, #102a43);
       color: white;
-      padding: 120px 0 120px;
+      padding: 100px 0 120px;
       position: relative;
     }
     
@@ -270,24 +368,18 @@
       box-shadow: 0 36px 70px -30px rgba(0,0,0,0.6);
     }
 
-    /* Поле для вашего контента (вместо кнопок) */
-    .custom-content-placeholder {
-      background: rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-      border: 2px dashed rgba(255, 255, 255, 0.3);
-      border-radius: 40px;
-      padding: 20px 30px;
-      display: inline-block;
-      color: white;
+    /* Поле для вашего контента (теперь текст доверия) */
+    .trust-badge {
       font-size: 18px;
-      font-weight: 500;
+      font-weight: 400;
+      color: rgba(255,255,255,0.8);
       margin: 20px 0 10px;
+      letter-spacing: 0.3px;
     }
     
-    .custom-content-placeholder i {
+    .trust-badge i {
       color: #fbbf24;
-      margin-right: 10px;
+      margin-right: 8px;
     }
 
     .section {
@@ -414,7 +506,7 @@
       margin-bottom: 20px;
     }
 
-    /* Портфолио с реальными фото */
+    /* Портфолио */
     .portfolio-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(320px,1fr));
@@ -527,7 +619,6 @@
       font-size: 20px;
     }
     
-    /* ЧИСТЫЕ СОЦКНОПКИ */
     .social-links {
       display: flex;
       gap: 15px;
@@ -592,7 +683,6 @@
       box-shadow: 0 0 0 4px rgba(37,99,235,0.15);
     }
 
-    /* КНОПКА ОТПРАВКИ */
     .submit-btn {
       background: #2563eb;
       color: white;
@@ -647,7 +737,7 @@
       max-height: 300px;
     }
 
-    /* КРАСИВЫЙ ПОДВАЛ как в лучших версиях */
+    /* Подвал */
     footer {
       background: var(--footer-bg);
       color: var(--footer-text);
@@ -739,7 +829,6 @@
       color: var(--footer-text);
     }
 
-    /* ЧИСТАЯ WHATSAPP КНОПКА */
     .whatsapp-float {
       position: fixed;
       bottom: 30px;
@@ -770,16 +859,10 @@
       transform: scale(1.1);
     }
 
-    /* Мобильная адаптация */
+    /* Мобильная адаптация остальных секций */
     @media (max-width: 700px) {
-      .header-flex {
-        justify-content: center;
-      }
-      .header-controls {
-        margin-top: 8px;
-      }
       .hero {
-        padding: 100px 0 100px;
+        padding: 80px 0 100px;
       }
       .hero h1 {
         font-size: 32px;
@@ -792,13 +875,10 @@
         justify-content: center;
       }
       .hero-image img {
-        object-position: 50% 70%;
         max-height: 400px;
       }
-      .custom-content-placeholder {
-        margin-left: auto;
-        margin-right: auto;
-        display: table;
+      .trust-badge {
+        text-align: center;
       }
       .about-grid {
         grid-template-columns: 1fr;
@@ -837,6 +917,8 @@
       <div class="logo">
         <a href="/"><span>PLOTVI</span></a>
       </div>
+      
+      <!-- Десктопное меню -->
       <nav>
         <ul>
           <li><a href="#home" id="navHome">Home</a></li>
@@ -846,6 +928,7 @@
           <li><a href="#contact" id="navContact">Contact</a></li>
         </ul>
       </nav>
+      
       <div class="header-controls">
         <div class="language-selector">
           <button class="lang-btn active" data-lang="en" id="langEn">
@@ -860,9 +943,24 @@
         <div class="theme-toggle" id="themeToggle">
           <i class="fas fa-moon"></i>
         </div>
+        <!-- Кнопка мобильного меню -->
+        <div class="mobile-menu-btn" id="mobileMenuBtn">
+          <i class="fas fa-bars"></i>
+        </div>
       </div>
     </div>
   </header>
+
+  <!-- Мобильное выпадающее меню -->
+  <div class="mobile-nav" id="mobileNav">
+    <ul>
+      <li><a href="#home" id="mobileNavHome">Home</a></li>
+      <li><a href="#about" id="mobileNavAbout">About</a></li>
+      <li><a href="#services" id="mobileNavServices">Services</a></li>
+      <li><a href="#portfolio" id="mobileNavProjects">Projects</a></li>
+      <li><a href="#contact" id="mobileNavContact">Contact</a></li>
+    </ul>
+  </div>
 
   <section class="hero" id="home">
     <div class="container hero-grid">
@@ -870,10 +968,10 @@
         <h1 id="heroTitle">Real estate in the Dominican Republic</h1>
         <p id="heroSub">Turnkey villas · Legal support · Investments · Sosúa, Cabarete, Punta Cana</p>
         
-        <!-- Вместо кнопок теперь поле для вашего контента -->
-        <div class="custom-content-placeholder">
-          <i class="fas fa-pencil-alt"></i> 
-          <span id="customPlaceholderText">Здесь может быть ваш контент (кнопки, текст, форма)</span>
+        <!-- Текст доверия (вместо кнопок) -->
+        <div class="trust-badge">
+          <i class="fas fa-star"></i> 
+          <span id="trustText">Trusted by international clients since 2007</span>
         </div>
         
         <div class="hero-stats">
@@ -887,6 +985,7 @@
     </div>
   </section>
 
+  <!-- Остальные секции без изменений -->
   <section class="section" id="about">
     <div class="container">
       <h2 class="section-title fade-up" id="aboutTitle">About Vladis P.Plot</h2>
@@ -1023,7 +1122,6 @@
     </div>
   </section>
 
-  <!-- КРАСИВЫЙ ПОДВАЛ -->
   <footer>
     <div class="container">
       <div class="footer-grid">
@@ -1073,8 +1171,8 @@
         navHome: 'Home', navAbout: 'About', navServices: 'Services', navProjects: 'Projects', navContact: 'Contact',
         heroTitle: 'Real estate in the Dominican Republic',
         heroSub: 'Turnkey villas · Legal support · Investments · Sosúa, Cabarete, Punta Cana',
+        trustText: 'Trusted by international clients since 2007',
         statYears: 'years experience', statVillas: 'villas built',
-        customPlaceholder: 'Trusted by international clients since 2007',
         aboutTitle: 'About Vladis P.Plot',
         aboutBadge: 'Since 2007',
         aboutHeading: 'Trusted partner in luxury real estate',
@@ -1116,8 +1214,8 @@
         navHome: 'Inicio', navAbout: 'Nosotros', navServices: 'Servicios', navProjects: 'Proyectos', navContact: 'Contacto',
         heroTitle: 'Bienes raíces en República Dominicana',
         heroSub: 'Villas llave en mano · Asesoría legal · Inversiones · Sosúa, Cabarete, Punta Cana',
+        trustText: 'Confianza internacional desde 2007',
         statYears: 'años de experiencia', statVillas: 'villas construidas',
-        customPlaceholder: 'Confianza internacional desde 2007',
         aboutTitle: 'Sobre Vladis P.Plot',
         aboutBadge: 'Desde 2007',
         aboutHeading: 'Socio confiable en bienes raíces de lujo',
@@ -1170,12 +1268,19 @@
       document.getElementById('navProjects').innerText = t.navProjects;
       document.getElementById('navContact').innerText = t.navContact;
       
+      // Mobile navigation
+      document.getElementById('mobileNavHome').innerText = t.navHome;
+      document.getElementById('mobileNavAbout').innerText = t.navAbout;
+      document.getElementById('mobileNavServices').innerText = t.navServices;
+      document.getElementById('mobileNavProjects').innerText = t.navProjects;
+      document.getElementById('mobileNavContact').innerText = t.navContact;
+      
       // Hero
       document.getElementById('heroTitle').innerHTML = t.heroTitle;
       document.getElementById('heroSub').innerText = t.heroSub;
+      document.getElementById('trustText').innerText = t.trustText;
       document.getElementById('statYears').innerText = t.statYears;
       document.getElementById('statVillas').innerText = t.statVillas;
-      document.getElementById('customPlaceholderText').innerText = t.customPlaceholder;
       
       // About
       document.getElementById('aboutTitle').innerText = t.aboutTitle;
@@ -1288,10 +1393,15 @@
       document.querySelector('#themeToggle i').className = isDark ? 'fas fa-sun' : 'fas fa-moon';
     }
 
-    // Header при скролле
+    // Мобильное меню
+    function toggleMobileMenu() {
+      const mobileNav = document.getElementById('mobileNav');
+      mobileNav.classList.toggle('active');
+    }
+
+    // Header при скролле (не нужен, так как шапка всегда с фоном)
     function handleHeaderScroll() {
-      const header = document.getElementById('mainHeader');
-      header.classList.toggle('scrolled', window.scrollY > 50);
+      // Можно оставить пустым или удалить
     }
 
     // Анимации
@@ -1330,6 +1440,14 @@
     document.getElementById('themeToggle').addEventListener('click', toggleTheme);
     document.getElementById('langEn').addEventListener('click', () => applyLanguage('en'));
     document.getElementById('langEs').addEventListener('click', () => applyLanguage('es'));
+    document.getElementById('mobileMenuBtn').addEventListener('click', toggleMobileMenu);
+    
+    // Закрываем меню при клике на ссылку
+    document.querySelectorAll('.mobile-nav a').forEach(link => {
+      link.addEventListener('click', () => {
+        document.getElementById('mobileNav').classList.remove('active');
+      });
+    });
   </script>
 </body>
 </html>
