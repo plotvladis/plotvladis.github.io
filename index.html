@@ -1023,7 +1023,7 @@
               <div class="about-stat-label" id="aboutStat3">legal compliance</div>
             </div>
             <div class="about-stat-item">
-              <div class="about-stat-number">350+</div>
+              <div class="about-stat-number">50+</div>
               <div class="about-stat-label" id="aboutStat4">happy investors</div>
             </div>
           </div>
@@ -1114,7 +1114,7 @@
             <div class="form-group"><input type="text" name="name" placeholder="Your name" id="formName" required></div>
             <div class="form-group"><input type="email" name="email" placeholder="Email address" id="formEmail" required></div>
             <div class="form-group"><input type="tel" name="phone" placeholder="WhatsApp / phone" id="formPhone" required></div>
-            <div class="form-group"><textarea rows="3" name="message" placeholder="Message / project type..." id="formMsg"></textarea></div>
+            <div class="form-group"><textarea rows="3" name="message" placeholder="Message / project type..." id="formMsg" required></textarea></div>
             <button type="submit" class="submit-btn" id="formSubmit">Send request</button>
           </form>
         </div>
@@ -1449,5 +1449,43 @@
       });
     });
   </script>
+
+<script>
+(function(){
+  const form = document.getElementById('quickForm');
+  const submitBtn = document.getElementById('formSubmit');
+  const requiredFields = form.querySelectorAll('input[required], textarea[required]');
+
+  function checkValidity(){
+    let valid = true;
+    requiredFields.forEach(field => {
+      if(!field.value.trim()){
+        valid = false;
+      }
+      if(field.type === 'email' && field.value){
+        valid = field.checkValidity();
+      }
+    });
+    submitBtn.disabled = !valid;
+    submitBtn.style.opacity = valid ? '1' : '0.5';
+    submitBtn.style.cursor = valid ? 'pointer' : 'not-allowed';
+  }
+
+  requiredFields.forEach(field => {
+    field.addEventListener('input', checkValidity);
+    field.addEventListener('change', checkValidity);
+  });
+
+  form.addEventListener('submit', function(e){
+    checkValidity();
+    if(submitBtn.disabled){
+      e.preventDefault();
+    }
+  });
+
+  checkValidity();
+})();
+</script>
+
 </body>
 </html>
